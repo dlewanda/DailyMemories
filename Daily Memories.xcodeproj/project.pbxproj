@@ -15,6 +15,10 @@
 		A31AAB2D23FB69200025A1A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31AAB2B23FB69200025A1A5 /* LaunchScreen.storyboard */; };
 		A31AAB3823FB69200025A1A5 /* Daily_MemoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB3723FB69200025A1A5 /* Daily_MemoriesTests.swift */; };
 		A31AAB4323FB69210025A1A5 /* Daily_MemoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB4223FB69210025A1A5 /* Daily_MemoriesUITests.swift */; };
+		A31AAB5123FB81820025A1A5 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB5023FB81820025A1A5 /* ImageFetcher.swift */; };
+		A31AAB532401D1290025A1A5 /* YearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB522401D1290025A1A5 /* YearListView.swift */; };
+		A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */; };
+		A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB56240DFB250025A1A5 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		A31AAB3E23FB69210025A1A5 /* Daily MemoriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daily MemoriesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31AAB4223FB69210025A1A5 /* Daily_MemoriesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily_MemoriesUITests.swift; sourceTree = "<group>"; };
 		A31AAB4423FB69210025A1A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A31AAB5023FB81820025A1A5 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		A31AAB522401D1290025A1A5 /* YearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearListView.swift; sourceTree = "<group>"; };
+		A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationStatusView.swift; sourceTree = "<group>"; };
+		A31AAB56240DFB250025A1A5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +108,16 @@
 			isa = PBXGroup;
 			children = (
 				A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */,
-				A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */,
-				A31AAB2423FB691C0025A1A5 /* ContentView.swift */,
 				A31AAB2623FB69200025A1A5 /* Assets.xcassets */,
-				A31AAB2B23FB69200025A1A5 /* LaunchScreen.storyboard */,
+				A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */,
+				A31AAB2423FB691C0025A1A5 /* ContentView.swift */,
+				A31AAB5023FB81820025A1A5 /* ImageFetcher.swift */,
 				A31AAB2E23FB69200025A1A5 /* Info.plist */,
+				A31AAB2B23FB69200025A1A5 /* LaunchScreen.storyboard */,
+				A31AAB56240DFB250025A1A5 /* MainView.swift */,
 				A31AAB2823FB69200025A1A5 /* Preview Content */,
+				A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */,
+				A31AAB522401D1290025A1A5 /* YearListView.swift */,
 			);
 			path = "Daily Memories";
 			sourceTree = "<group>";
@@ -268,6 +280,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */,
+				A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */,
+				A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */,
+				A31AAB5123FB81820025A1A5 /* ImageFetcher.swift in Sources */,
+				A31AAB532401D1290025A1A5 /* YearListView.swift in Sources */,
 				A31AAB2323FB691C0025A1A5 /* SceneDelegate.swift in Sources */,
 				A31AAB2523FB691C0025A1A5 /* ContentView.swift in Sources */,
 			);
