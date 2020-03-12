@@ -10,10 +10,10 @@ import SwiftUI
 import Photos
 
 struct AuthorizationStatusView: View {
-    @ObservedObject var imageFetcher = ImageFetcher.shared
+    @State var authorizationStatus: PHAuthorizationStatus
     
     var statusString: String {
-        switch imageFetcher.authorizationStatus {
+        switch authorizationStatus {
         case .authorized:
             return "You are authorized!"
         case .denied:
@@ -21,21 +21,25 @@ struct AuthorizationStatusView: View {
         case .restricted:
             return "You are not allowed to access your photos through this app."
         case .notDetermined:
-            return "Authorization not yet determined."
+            return "Authorization not yet determined"
         @unknown default:
             return "Unknown status?!?"
         }
     }
+    
     var body: some View {
         VStack {
             Image(systemName: "photo.on.rectangle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             Text(statusString)
+                .font(.title)
         }
     }
 }
 
 struct AuthorizationErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthorizationStatusView()
+        AuthorizationStatusView(authorizationStatus: ImageFetcher.shared.authorizationStatus)
     }
 }

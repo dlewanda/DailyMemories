@@ -8,6 +8,7 @@
 
 import Photos
 import Combine
+import UIKit
 
 struct Asset: Identifiable {
     var id = UUID()
@@ -17,20 +18,51 @@ struct Asset: Identifiable {
 struct YearlyAssets: Identifiable {
     var id = UUID()
 
+    static var sectionHeaderFormat: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.usesGroupingSeparator = false
+        return formatter
+    }
+
     let year: Int
     var assets: [Asset] = [Asset]()
+
+    var yearString: String {
+        return Self.sectionHeaderFormat.string(from: NSNumber(value: year)) ?? "-----"
+    }
+}
+
+extension PHAsset {
+    var creationDateString: String {
+        guard let creationDate = self.creationDate else {
+            return "Unknown"
+        }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .long
+
+        return dateFormatter.string(from: creationDate)
+//        return creationDate.description(with: Locale.current)
+    }
 }
 
 class ImageFetcher: ObservableObject {
+    public static let shared = ImageFetcher()
+
     @Published var authorizationStatus = PHAuthorizationStatus.notDetermined
+    @Published var yearlyAssets: [YearlyAssets] = [YearlyAssets]()
     private var requestCancellable: Cancellable?
 
     public func requestPhotoAccess() {
         let requestFuture = requestPhotosAccessPromise()
         requestCancellable = requestFuture
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { authorizationStatus in
-                self.authorizationStatus = authorizationStatus
+            .sink(receiveValue: { [weak self] authorizationStatus in
+                self?.authorizationStatus = authorizationStatus
+                if let strongSelf = self, strongSelf.authorizationStatus == .authorized {
+                    strongSelf.yearlyAssets = strongSelf.fetchAssetsFor(date: Date())
+                }
             })
     }
 
@@ -52,24 +84,22 @@ class ImageFetcher: ObservableObject {
         return phAsset
     }
 
-    public static let shared = ImageFetcher()
-
     private func requestPhotosAccessPromise() -> Future<PHAuthorizationStatus, Never> {
         let authorize = Future<PHAuthorizationStatus, Never> { promise in
             switch PHPhotoLibrary.authorizationStatus() {
             case .authorized:
                 promise(.success(.authorized))
             case .denied:
-                return promise(.success(.denied))
+                promise(.success(.denied))
             case .notDetermined:
                 PHPhotoLibrary.requestAuthorization { status in
-                    return promise(.success(status))
+                   promise(.success(status))
                 }
             case .restricted:
-                return promise(.success(.restricted))
+                promise(.success(.restricted))
             @unknown default:
                 print("unknown authorization status")
-                return promise(.success(.restricted))
+                promise(.success(.restricted))
             }
 
         }
@@ -77,7 +107,7 @@ class ImageFetcher: ObservableObject {
         return authorize
     }
 
-    public func fetchAssetsFor(date: Date = Date()) -> [YearlyAssets] {
+    private func fetchAssetsFor(date: Date = Date()) -> [YearlyAssets] {
         
         var assets = [YearlyAssets]()
 
@@ -121,6 +151,37 @@ class ImageFetcher: ObservableObject {
         }
 
         return assets
+    }
+
+    private var requestOptions: PHImageRequestOptions {
+        let requestOptions = PHImageRequestOptions()
+//        requestOptions.isSynchronous = false
+        requestOptions.deliveryMode = .highQualityFormat
+        requestOptions.isNetworkAccessAllowed = true
+        return requestOptions
+    }
+
+    public func loadImage(asset: PHAsset) -> Future<UIImage, Never> {
+        let imagePromise = Future<UIImage, Never> { [weak self] promise in
+            let manager = PHImageManager.default()
+
+            manager.requestImage(for: asset,
+                                 targetSize: PHImageManagerMaximumSize,
+                                 contentMode: .aspectFill,
+                                 options: self?.requestOptions) { img, info  in
+                                    guard let img = img else {
+                                        if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
+                                            isIniCloud.boolValue == true {
+                                            if let cloudImage = UIImage(systemName: "person.icloud.fill") {
+                                                promise(.success(cloudImage))
+                                            }
+                                        }
+                                        return
+                                    }
+                                    promise(.success(img))
+            }
+        }
+        return imagePromise
     }
 }
 

@@ -19,6 +19,9 @@
 		A31AAB532401D1290025A1A5 /* YearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB522401D1290025A1A5 /* YearListView.swift */; };
 		A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */; };
 		A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB56240DFB250025A1A5 /* MainView.swift */; };
+		A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C42419046900CCC47A /* ContentDetailView.swift */; };
+		A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C6241904B100CCC47A /* ImageModel.swift */; };
+		A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CA2419CA4100CCC47A /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		A31AAB522401D1290025A1A5 /* YearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearListView.swift; sourceTree = "<group>"; };
 		A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationStatusView.swift; sourceTree = "<group>"; };
 		A31AAB56240DFB250025A1A5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A3BA05C42419046900CCC47A /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
+		A3BA05C6241904B100CCC47A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		A3BA05CA2419CA4100CCC47A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,15 +115,13 @@
 			children = (
 				A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */,
 				A31AAB2623FB69200025A1A5 /* Assets.xcassets */,
-				A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */,
-				A31AAB2423FB691C0025A1A5 /* ContentView.swift */,
 				A31AAB5023FB81820025A1A5 /* ImageFetcher.swift */,
 				A31AAB2E23FB69200025A1A5 /* Info.plist */,
 				A31AAB2B23FB69200025A1A5 /* LaunchScreen.storyboard */,
-				A31AAB56240DFB250025A1A5 /* MainView.swift */,
+				A3BA05C92419063500CCC47A /* Models */,
 				A31AAB2823FB69200025A1A5 /* Preview Content */,
 				A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */,
-				A31AAB522401D1290025A1A5 /* YearListView.swift */,
+				A3BA05C82419062F00CCC47A /* Views */,
 			);
 			path = "Daily Memories";
 			sourceTree = "<group>";
@@ -146,6 +150,27 @@
 				A31AAB4423FB69210025A1A5 /* Info.plist */,
 			);
 			path = "Daily MemoriesUITests";
+			sourceTree = "<group>";
+		};
+		A3BA05C82419062F00CCC47A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */,
+				A3BA05C42419046900CCC47A /* ContentDetailView.swift */,
+				A31AAB2423FB691C0025A1A5 /* ContentView.swift */,
+				A31AAB56240DFB250025A1A5 /* MainView.swift */,
+				A31AAB522401D1290025A1A5 /* YearListView.swift */,
+				A3BA05CA2419CA4100CCC47A /* MapView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A3BA05C92419063500CCC47A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A3BA05C6241904B100CCC47A /* ImageModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,8 +307,11 @@
 				A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */,
 				A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */,
 				A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */,
+				A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */,
+				A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */,
 				A31AAB5123FB81820025A1A5 /* ImageFetcher.swift in Sources */,
 				A31AAB532401D1290025A1A5 /* YearListView.swift in Sources */,
+				A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */,
 				A31AAB2323FB691C0025A1A5 /* SceneDelegate.swift in Sources */,
 				A31AAB2523FB691C0025A1A5 /* ContentView.swift in Sources */,
 			);
