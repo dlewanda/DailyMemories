@@ -10,6 +10,15 @@ import SwiftUI
 
 struct ContentDetailView: View {
     @ObservedObject var imageModel: ImageModel
+    @State var presentFullscreenImage = false
+
+    var image: Image {
+        Image(uiImage: imageModel.image ?? UIImage(systemName: "photo")!)
+    }
+
+    var imageView: some View {
+        image.resizable().aspectRatio(contentMode: .fit)
+    }
 
     var body: some View {
         VStack {
@@ -26,10 +35,13 @@ struct ContentDetailView: View {
                 //                })
             }
             .padding()
-            Image(uiImage: imageModel.image ?? UIImage(systemName: "photo")!)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            imageView.onTapGesture(count: 2) {
+                self.presentFullscreenImage = true
+            }
             MapView(coordinate: imageModel.coordinate)
+        }
+        .sheet(isPresented: $presentFullscreenImage) {
+            ImageView(image: self.image, presentImage: self.$presentFullscreenImage)
         }
     }
 }
