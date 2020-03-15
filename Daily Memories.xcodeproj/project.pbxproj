@@ -22,6 +22,7 @@
 		A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C42419046900CCC47A /* ContentDetailView.swift */; };
 		A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C6241904B100CCC47A /* ImageModel.swift */; };
 		A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CA2419CA4100CCC47A /* MapView.swift */; };
+		A3BA05CD241DA46A00CCC47A /* View+PhoneStackNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A3BA05C42419046900CCC47A /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		A3BA05C6241904B100CCC47A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		A3BA05CA2419CA4100CCC47A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+PhoneStackNavigationView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				A31AAB56240DFB250025A1A5 /* MainView.swift */,
 				A31AAB522401D1290025A1A5 /* YearListView.swift */,
 				A3BA05CA2419CA4100CCC47A /* MapView.swift */,
+				A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */,
+				A3BA05CD241DA46A00CCC47A /* View+PhoneStackNavigationView.swift in Sources */,
 				A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */,
 				A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */,
 				A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */,

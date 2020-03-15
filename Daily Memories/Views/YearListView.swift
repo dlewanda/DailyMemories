@@ -42,6 +42,7 @@ struct YearListView: View {
                         }
                     }
                 }
+                .phoneOnlyStackNavigationView()
             }
         }
     }

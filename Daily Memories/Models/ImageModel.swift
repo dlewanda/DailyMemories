@@ -13,14 +13,16 @@ import UIKit
 
 class ImageModel: ObservableObject {
     @Published var image = UIImage(systemName: "photo")
-    private var phAsset: PHAsset = PHAsset()
+    @Published var isLoading = true
     private var imageCancellable: Cancellable?
+    private var phAsset: PHAsset
 
     public init(asset: PHAsset) {
         self.phAsset = asset
         imageCancellable = ImageFetcher.shared.loadImage(asset: self.phAsset)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { image in
+                self.isLoading = false
                 self.image = image
             })
     }
