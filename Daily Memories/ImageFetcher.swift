@@ -155,7 +155,6 @@ class ImageFetcher: ObservableObject {
 
     private var requestOptions: PHImageRequestOptions {
         let requestOptions = PHImageRequestOptions()
-//        requestOptions.isSynchronous = false
         requestOptions.deliveryMode = .highQualityFormat
         requestOptions.isNetworkAccessAllowed = true
         return requestOptions
