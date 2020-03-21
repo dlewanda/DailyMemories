@@ -12,9 +12,7 @@ struct ContentView: View {
     @ObservedObject var imageModel: ImageModel
 
     var body: some View {
-        Image(uiImage: imageModel.image ?? UIImage(systemName: "photo")!)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+        ImageView(image: Image(uiImage: imageModel.image ?? UIImage(systemName: "photo")!))
     }
 }
 

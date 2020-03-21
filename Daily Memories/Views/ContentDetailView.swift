@@ -16,10 +16,6 @@ struct ContentDetailView: View {
         Image(uiImage: imageModel.image ?? UIImage(systemName: "photo")!)
     }
 
-    var imageView: some View {
-        image.resizable().aspectRatio(contentMode: .fit)
-    }
-
     var body: some View {
         VStack {
             HStack {
@@ -35,13 +31,14 @@ struct ContentDetailView: View {
                 //                })
             }
             .padding()
-            imageView.onTapGesture(count: 2) {
+            ImageView(image: image)
+                .onTapGesture(count: 2) {
                 self.presentFullscreenImage = true
             }
             MapView(coordinate: imageModel.coordinate)
         }
         .sheet(isPresented: $presentFullscreenImage) {
-            ImageView(image: self.image, presentImage: self.$presentFullscreenImage)
+            ContentViewerView(image: self.image, presentImage: self.$presentFullscreenImage)
         }
     }
 }

@@ -29,9 +29,7 @@ struct AuthorizationStatusView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "photo.on.rectangle.fill")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            ImageView(image: Image(systemName: "photo.on.rectangle.fill"))
             Text(statusString)
                 .font(.title)
         }
