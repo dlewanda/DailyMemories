@@ -11,42 +11,48 @@ import SwiftUI
 
 struct YearListView: View {
     @State var yearlyAssetsArray: [YearlyAssets]
-
-    private func createContentView(from asset: PHAsset) -> some View {
-        return ContentView(imageModel: ImageModel(asset: asset))
-            .navigationBarTitle(Text("\(asset.creationDateString)").font(.headline),
-                                displayMode: .inline)
-    }
+    @State var showingNotificationSettings = false
 
     var body: some View {
-        Group {
-            if yearlyAssetsArray.isEmpty {
-                VStack {
-                    Image(systemName: "photo.on.rectangle")
-                    Text("No Photos for Today")
+        NavigationView {
+            Group {
+                if yearlyAssetsArray.isEmpty {
+                    VStack {
+                        ImageView(image: Image(systemName: "photo.on.rectangle"))
+                        Text("No Photos for Today").font(.largeTitle)
+                    }
+                    .padding()
                 }
-            }
-            else {
-                NavigationView {
+                else {
                     List {
                         ForEach(yearlyAssetsArray) { yearlyAssets in
                             Section(header: Text("\(yearlyAssets.yearString)")) {
                                 ForEach(yearlyAssets.assets) { asset in
                                     //TODO Switch on asset type
-                                    NavigationLink(destination: ContentDetailView(imageModel: ImageModel(asset: asset.phAsset))) {
-                                        ContentView(imageModel: ImageModel(asset: asset.phAsset))
+                                    NavigationLink(destination: ContentDetailView(imageModel: ImageModel(asset: asset.phAsset,
+                                                                                                         imageQuality: .highQualityFormat))) {
+                                                                                                            ContentView(imageModel: ImageModel(asset: asset.phAsset,
+                                                                                                                                               imageQuality: .highQualityFormat))
                                     }
-                                    .navigationBarTitle(Text("Daily Memories").font(.largeTitle))
                                 }
                             }
                         }
                     }
                 }
-                .phoneOnlyStackNavigationView()
             }
-        }
-    }
+            .navigationBarTitle(Text("Daily Memories").font(.largeTitle))
+            .navigationBarItems(trailing: Button(action: {
+                self.showingNotificationSettings.toggle()
+                NotificationsManager.shared.requestNotificationAccess()
+            }) {
+                Image(systemName: "bell.circle.fill")
+            }.sheet(isPresented: $showingNotificationSettings){
+                return NotificationSettingsView()
+            })
 
+        }
+//        .phoneOnlyStackNavigationView()
+    }
 }
 
 struct YearListView_Previews: PreviewProvider {
