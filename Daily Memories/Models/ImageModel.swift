@@ -17,9 +17,10 @@ class ImageModel: ObservableObject {
     private var imageCancellable: Cancellable?
     private var phAsset: PHAsset
 
-    public init(asset: PHAsset) {
+    public init(asset: PHAsset, imageQuality: PHImageRequestOptionsDeliveryMode) {
         self.phAsset = asset
-        imageCancellable = ImageFetcher.shared.loadImage(asset: self.phAsset)
+        imageCancellable = ImageFetcher.shared.loadImage(asset: self.phAsset,
+                                                         quality: imageQuality)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { image in
                 self.isLoading = false

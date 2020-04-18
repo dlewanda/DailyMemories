@@ -45,6 +45,6 @@ struct ContentDetailView: View {
 
 struct ContentDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentDetailView(imageModel: ImageModel(asset: ImageFetcher.shared.fetchTestAsset()))
+        ContentDetailView(imageModel: ImageModel(asset: ImageFetcher.shared.fetchTestAsset(), imageQuality: .highQualityFormat))
     }
 }

@@ -153,21 +153,18 @@ class ImageFetcher: ObservableObject {
         return assets
     }
 
-    private var requestOptions: PHImageRequestOptions {
+    public func loadImage(asset: PHAsset, quality: PHImageRequestOptionsDeliveryMode) -> Future<UIImage, Never> {
         let requestOptions = PHImageRequestOptions()
-        requestOptions.deliveryMode = .highQualityFormat
+        requestOptions.deliveryMode = quality
         requestOptions.isNetworkAccessAllowed = true
-        return requestOptions
-    }
 
-    public func loadImage(asset: PHAsset) -> Future<UIImage, Never> {
-        let imagePromise = Future<UIImage, Never> { [weak self] promise in
+        let imagePromise = Future<UIImage, Never> { promise in
             let manager = PHImageManager.default()
 
             manager.requestImage(for: asset,
                                  targetSize: PHImageManagerMaximumSize,
                                  contentMode: .aspectFill,
-                                 options: self?.requestOptions) { img, info  in
+                                 options: requestOptions) { img, info  in
                                     guard let img = img else {
                                         if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
                                             isIniCloud.boolValue == true {

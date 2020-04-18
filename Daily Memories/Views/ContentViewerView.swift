@@ -11,11 +11,29 @@ import SwiftUI
 struct ContentViewerView: View {
     @State var image: Image
     @State var scale: CGFloat = 1.0
+    @State var currentPosition = CGSize()
+    @State var newPosition = CGSize()
     @Binding var presentImage: Bool
 
-    var imageView: some View {
-        return image.resizable()
+    private var dragGesture: _EndedGesture<_ChangedGesture<DragGesture>> {
+        DragGesture().onChanged({ value in
+            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width,
+                                          height: value.translation.height + self.newPosition.height)
+        })
+            .onEnded( { value in
+                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width,
+                                              height: value.translation.height + self.newPosition.height)
+                self.newPosition = self.currentPosition
+            })
     }
+
+    private var magnificationGesture: _ChangedGesture<MagnificationGesture> {
+        MagnificationGesture()
+        .onChanged { value in
+            self.scale = value.magnitude
+        }
+    }
+
     var body: some View {
         VStack {
             #if targetEnvironment(macCatalyst)
@@ -30,6 +48,7 @@ struct ContentViewerView: View {
             .padding()
             #endif
 
+            //            GeometryReader { geometry in
             //                ScrollView([.horizontal, .vertical]) {
             ImageView(image: image)
                 .offset(x: self.currentPosition.width, y: self.currentPosition.height)
@@ -38,7 +57,10 @@ struct ContentViewerView: View {
                 .onTapGesture(count: 2) {
                     self.scale = 1.0
             }
+            .gesture(magnificationGesture.simultaneously(with: self.dragGesture))
             //                }
+            //            }
+
             #if targetEnvironment(macCatalyst)
             Spacer()
             #endif
