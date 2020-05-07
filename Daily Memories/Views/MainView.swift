@@ -15,7 +15,7 @@ struct MainView: View {
     var body: some View {
         Group {
             if imageFetcher.authorizationStatus == .authorized {
-                YearListView(yearlyAssetsArray: imageFetcher.yearlyAssets)
+                YearNavigationView()
             } else {
                 AuthorizationStatusView(authorizationStatus: imageFetcher.authorizationStatus)
             }

@@ -2,61 +2,48 @@
 //  YearListView.swift
 //  Daily Memories
 //
-//  Created by David Lewanda on 2/22/20.
+//  Created by David Lewanda on 4/22/20.
 //  Copyright © 2020 LewandaCode. All rights reserved.
 //
 
-import Photos.PHAsset
 import SwiftUI
+import Combine
 
 struct YearListView: View {
-    @State var yearlyAssetsArray: [YearlyAssets]
-    @State var showingNotificationSettings = false
+    @ObservedObject var imageFetcher = ImageFetcher.shared
+
+    var yearlyAssetsArray: [YearlyAssets] {
+        imageFetcher.yearlyAssets
+    }
+
+    fileprivate func createContentView(for imageModel: ImageModel) -> ContentView {
+        return ContentView(imageModel: imageModel)
+    }
+
+    fileprivate func createNavigationLink(for asset: Asset) -> NavigationLink<ContentView, ContentDetailView> {
+        //TODO Switch on asset type
+        let imageModel = ImageModel(asset: asset.phAsset, imageQuality: .highQualityFormat)
+        let contentDetailView = ContentDetailView(imageModel: imageModel)
+        return NavigationLink(destination: contentDetailView) {
+            createContentView(for: imageModel)
+        }
+    }
 
     var body: some View {
-        NavigationView {
-            Group {
-                if yearlyAssetsArray.isEmpty {
-                    VStack {
-                        ImageView(image: Image(systemName: "photo.on.rectangle"))
-                        Text("No Photos for Today").font(.largeTitle)
-                    }
-                    .padding()
-                }
-                else {
-                    List {
-                        ForEach(yearlyAssetsArray) { yearlyAssets in
-                            Section(header: Text("\(yearlyAssets.yearString)")) {
-                                ForEach(yearlyAssets.assets) { asset in
-                                    //TODO Switch on asset type
-                                    NavigationLink(destination: ContentDetailView(imageModel: ImageModel(asset: asset.phAsset,
-                                                                                                         imageQuality: .highQualityFormat))) {
-                                                                                                            ContentView(imageModel: ImageModel(asset: asset.phAsset,
-                                                                                                                                               imageQuality: .highQualityFormat))
-                                    }
-                                }
-                            }
-                        }
+        List {
+            ForEach(yearlyAssetsArray) { yearlyAssets in
+                Section(header: Text("\(yearlyAssets.yearString)")) {
+                    ForEach(yearlyAssets.assets) { asset in
+                        self.createNavigationLink(for: asset)
                     }
                 }
             }
-            .navigationBarTitle(Text("Daily Memories").font(.largeTitle))
-            .navigationBarItems(trailing: Button(action: {
-                self.showingNotificationSettings.toggle()
-                NotificationsManager.shared.requestNotificationAccess()
-            }) {
-                Image(systemName: "bell.circle.fill")
-            }.sheet(isPresented: $showingNotificationSettings){
-                return NotificationSettingsView()
-            })
-
         }
-//        .phoneOnlyStackNavigationView()
     }
 }
 
 struct YearListView_Previews: PreviewProvider {
     static var previews: some View {
-        YearListView(yearlyAssetsArray: ImageFetcher.shared.yearlyAssets)
+        YearListView()
     }
 }

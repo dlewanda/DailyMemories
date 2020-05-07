@@ -1,5 +1,5 @@
 //
-//  ImageView.swift
+//  ContentViewerView.swift
 //  Daily Memories
 //
 //  Created by David Lewanda on 3/14/20.
@@ -11,32 +11,54 @@ import SwiftUI
 struct ContentViewerView: View {
     @State var image: Image
     @State var scale: CGFloat = 1.0
-    @State var currentPosition = CGSize()
-    @State var newPosition = CGSize()
+    @State var currentPosition = CGSize.zero
+    @State var newPosition = CGSize.zero
     @Binding var presentImage: Bool
 
+    private var isZoomed: Bool {
+        return scale > 1.0
+    }
+
+    fileprivate func getUpdatedPosition(for translation: CGSize) -> CGSize {
+        let newWidth = translation.width + self.newPosition.width
+        let newHeight = translation.height + self.newPosition.height
+        let newPosition = CGSize(width: newWidth, height: newHeight)
+        return newPosition
+    }
+
     private var dragGesture: _EndedGesture<_ChangedGesture<DragGesture>> {
-        DragGesture().onChanged({ value in
-            self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width,
-                                          height: value.translation.height + self.newPosition.height)
-        })
+        DragGesture(coordinateSpace: .global)
+            .onChanged({ value in
+                guard self.isZoomed else { return }
+                let newPosition = self.getUpdatedPosition(for: value.translation)
+                //only allow panning if not moving off screen
+                guard newPosition.width < 0, newPosition.height < 0 else { return }
+                self.currentPosition = self.getUpdatedPosition(for: value.translation)
+            })
             .onEnded( { value in
-                self.currentPosition = CGSize(width: value.translation.width + self.newPosition.width,
-                                              height: value.translation.height + self.newPosition.height)
+                guard self.isZoomed else { return }
+                let newPosition = self.getUpdatedPosition(for: value.translation)
+                //only allow panning if not moving off screen
+                guard newPosition.width < 0, newPosition.height < 0 else { return }
+                self.currentPosition = newPosition
                 self.newPosition = self.currentPosition
             })
     }
 
-    private var magnificationGesture: _ChangedGesture<MagnificationGesture> {
+    private var magnificationGesture: _EndedGesture<_ChangedGesture<MagnificationGesture>> {
         MagnificationGesture()
-        .onChanged { value in
-            self.scale = value.magnitude
-        }
+            .onChanged({ value in
+                // only allow zooming larger than default
+                guard value.magnitude >= 1.0 else { return }
+                self.scale = value.magnitude
+            })
+            .onEnded({ value in
+                //self.newPosition = self.currentPosition
+            })
     }
 
     var body: some View {
         VStack {
-            #if targetEnvironment(macCatalyst)
             HStack {
                 Button(action: {
                     self.presentImage.toggle()
@@ -46,24 +68,24 @@ struct ContentViewerView: View {
                 Spacer()
             }
             .padding()
-            #endif
 
-            //            GeometryReader { geometry in
-            //                ScrollView([.horizontal, .vertical]) {
+            Spacer()
+            
             ImageView(image: image)
                 .offset(x: self.currentPosition.width, y: self.currentPosition.height)
                 .scaleEffect(scale)
                 .clipped()
                 .onTapGesture(count: 2) {
-                    self.scale = 1.0
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        // reset size and position on double tap
+                        self.scale = 1.0
+                        self.currentPosition = CGSize.zero
+                    }
+
             }
             .gesture(magnificationGesture.simultaneously(with: self.dragGesture))
-            //                }
-            //            }
 
-            #if targetEnvironment(macCatalyst)
             Spacer()
-            #endif
         }
     }
 }
