@@ -21,7 +21,7 @@ struct AuthorizationStatusView: View {
         case .restricted:
             return "You are not allowed to access your photos through this app."
         case .notDetermined:
-            return "Authorization not yet determined"
+            return "Determining authorization status..."
         @unknown default:
             return "Unknown status?!?"
         }

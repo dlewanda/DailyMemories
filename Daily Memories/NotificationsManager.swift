@@ -49,8 +49,8 @@ class NotificationsManager: ObservableObject {
         UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
             for request in requests {
                 guard let calendarTrigger = request.trigger as? UNCalendarNotificationTrigger,
-                let triggerTime = Calendar.current.date(from: calendarTrigger.dateComponents) else {
-                    break
+                    let triggerTime = Calendar.current.date(from: calendarTrigger.dateComponents) else {
+                        break
                 }
 
                 self.notificationTime = triggerTime
@@ -77,12 +77,14 @@ class NotificationsManager: ObservableObject {
     }
 
     public func requestNotificationAccess() {
-        let requestFuture = requestPermissionPromise()
-        requestCancellable = requestFuture
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] authorizationStatus in
-                self?.notificationsAuthorized = authorizationStatus
-            })
+        if !notificationsAuthorized {
+            let requestFuture = requestPermissionPromise()
+            requestCancellable = requestFuture
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] authorizationStatus in
+                    self?.notificationsAuthorized = authorizationStatus
+                })
+        }
     }
 
     public func scheduleNotification(at time: Date) {
