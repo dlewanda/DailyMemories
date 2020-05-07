@@ -10,9 +10,19 @@ import SwiftUI
 
 struct NotificationSettingsView: View {
     @ObservedObject var notificationsManager = NotificationsManager.shared
+    @Binding var showSettings: Bool
 
     var body: some View {
         Group {
+            HStack {
+                Button(action: {
+                    self.showSettings.toggle()
+                }) {
+                    Text("Dismiss")
+                }
+                Spacer()
+            }
+            .padding()
             if notificationsManager.notificationsAuthorized {
                 VStack {
                     Text("Notification Settings").font(.largeTitle)
@@ -41,6 +51,6 @@ struct NotificationSettingsView: View {
 
 struct NotificationSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationSettingsView()
+        NotificationSettingsView(showSettings: .constant(true))
     }
 }
