@@ -61,7 +61,7 @@ class ImageFetcher: ObservableObject {
             .sink(receiveValue: { [weak self] authorizationStatus in
                 self?.authorizationStatus = authorizationStatus
                 if let strongSelf = self, strongSelf.authorizationStatus == .authorized {
-                    strongSelf.yearlyAssets = strongSelf.fetchAssetsFor(date: Date())
+                    strongSelf.yearlyAssets = strongSelf.fetchAssets(for: Date())
                 }
             })
     }
@@ -107,7 +107,7 @@ class ImageFetcher: ObservableObject {
         return authorize
     }
 
-    private func fetchAssetsFor(date: Date = Date()) -> [YearlyAssets] {
+    private func fetchAssets(for date: Date = Date()) -> [YearlyAssets] {
         
         var assets = [YearlyAssets]()
 
@@ -153,6 +153,10 @@ class ImageFetcher: ObservableObject {
         return assets
     }
 
+    public func refreshAssets() {
+        yearlyAssets = fetchAssets()
+    }
+
     public func loadImage(asset: PHAsset, quality: PHImageRequestOptionsDeliveryMode) -> Future<UIImage, Never> {
         let requestOptions = PHImageRequestOptions()
         requestOptions.deliveryMode = quality
@@ -163,8 +167,8 @@ class ImageFetcher: ObservableObject {
 
             manager.requestImage(for: asset,
                                  targetSize: PHImageManagerMaximumSize,
-                                 contentMode: .aspectFill,
-                                 options: requestOptions) { img, info  in
+                                 contentMode: .aspectFit,
+                                 options: requestOptions) { img, info in
                                     guard let img = img else {
                                         if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
                                             isIniCloud.boolValue == true {
@@ -190,7 +194,7 @@ extension ImageFetcher {
             return [YearlyAssets]()
         }
 
-        return fetchAssetsFor(date: oldestAssetDate)
+        return fetchAssets(for: oldestAssetDate)
     }
 
     public func fetchTestYearlyAssets() -> YearlyAssets {
