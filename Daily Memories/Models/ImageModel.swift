@@ -22,10 +22,14 @@ class ImageModel: ObservableObject {
         imageCancellable = ImageFetcher.shared.loadImage(asset: self.phAsset,
                                                          quality: imageQuality)
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { image in
-                self.isLoading = false
-                self.image = image
+            .sink(receiveValue: { [weak self] image in
+                self?.isLoading = false
+                self?.image = image
             })
+    }
+
+    deinit {
+        imageCancellable?.cancel()
     }
 
     var creationDateString: String {
