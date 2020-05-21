@@ -26,22 +26,21 @@ struct ContentViewerView: View {
         return newPosition
     }
 
+    fileprivate func updatePosition(for value: DragGesture.Value) {
+        guard self.isZoomed else { return }
+        let newPosition = self.getUpdatedPosition(for: value.translation)
+        //only allow panning if not moving off screen
+        guard newPosition.width < 0, newPosition.height < 0 else { return }
+        self.currentPosition = newPosition
+    }
+
     private var dragGesture: _EndedGesture<_ChangedGesture<DragGesture>> {
         DragGesture(coordinateSpace: .global)
             .onChanged({ value in
-                guard self.isZoomed else { return }
-                let newPosition = self.getUpdatedPosition(for: value.translation)
-                //only allow panning if not moving off screen
-                guard newPosition.width < 0, newPosition.height < 0 else { return }
-                self.currentPosition = self.getUpdatedPosition(for: value.translation)
+                self.updatePosition(for: value)
             })
             .onEnded( { value in
-                guard self.isZoomed else { return }
-                let newPosition = self.getUpdatedPosition(for: value.translation)
-                //only allow panning if not moving off screen
-                guard newPosition.width < 0, newPosition.height < 0 else { return }
-                self.currentPosition = newPosition
-                self.newPosition = self.currentPosition
+                self.updatePosition(for: value)
             })
     }
 
