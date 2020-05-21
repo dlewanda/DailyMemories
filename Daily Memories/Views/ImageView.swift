@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ImageView: View {
-    var image: Image
+    @State var image: Image
     var body: some View {
         image.resizable()
             .aspectRatio(contentMode: .fit)
@@ -18,6 +18,6 @@ struct ImageView: View {
 
 struct ImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageView(image: Image(systemName: "photo"))
+        ImageView(image: Image(systemName: "photo.fill"))
     }
 }
