@@ -92,6 +92,6 @@ struct ContentViewerView: View {
 
 struct ContentViewerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewerView(image: Image(systemName: "photo"), presentImage: .constant(true))
+        ContentViewerView(image: Image(systemName: "photo.fill"), presentImage: .constant(true))
     }
 }

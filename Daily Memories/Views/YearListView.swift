@@ -10,22 +10,30 @@ import SwiftUI
 import Combine
 
 struct YearListView: View {
-    @ObservedObject var imageFetcher = ImageFetcher.shared
+    @ObservedObject var imageFetcher = ContentFetcher.shared
 
     var yearlyAssetsArray: [YearlyAssets] {
         imageFetcher.yearlyAssets
     }
 
-    fileprivate func createContentView(for imageModel: ImageModel) -> ContentView {
-        return ContentView(imageModel: imageModel)
+    fileprivate func createContentView(for assetModel: AssetModel) -> ContentView {
+        return ContentView(assetModel: assetModel)
     }
 
     fileprivate func createNavigationLink(for asset: Asset) -> NavigationLink<ContentView, ContentDetailView> {
         //TODO Switch on asset type
-        let imageModel = ImageModel(asset: asset.phAsset, imageQuality: .highQualityFormat)
-        let contentDetailView = ContentDetailView(imageModel: imageModel)
+        let assetModel: AssetModel
+
+        switch asset.phAsset.mediaType {
+        case .video:
+            assetModel = VideoModel(asset: asset.phAsset)
+        default:
+            assetModel = ImageModel(asset: asset.phAsset, imageQuality: .highQualityFormat)
+
+        }
+        let contentDetailView = ContentDetailView(assetModel: assetModel)
         return NavigationLink(destination: contentDetailView) {
-            createContentView(for: imageModel)
+            createContentView(for: assetModel)
         }
     }
 

@@ -9,17 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var imageModel: ImageModel
+    @ObservedObject var assetModel: AssetModel
 
     var body: some View {
-        ImageView(image: Image(uiImage: imageModel.image ?? UIImage(systemName: "photo")!))
+        ImageView(image: Image(uiImage: assetModel.image))
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView(imageModel: ImageModel(asset: ImageFetcher.shared.fetchTestAsset(),
+        ContentView(assetModel: ImageModel(asset: ContentFetcher.shared.fetchTestAsset(),
                                            imageQuality: .fastFormat))
     }
 }

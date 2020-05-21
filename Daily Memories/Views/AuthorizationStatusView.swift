@@ -38,6 +38,6 @@ struct AuthorizationStatusView: View {
 
 struct AuthorizationErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthorizationStatusView(authorizationStatus: ImageFetcher.shared.authorizationStatus)
+        AuthorizationStatusView(authorizationStatus: ContentFetcher.shared.authorizationStatus)
     }
 }

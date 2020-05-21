@@ -10,7 +10,7 @@ import Photos.PHAsset
 import SwiftUI
 
 struct YearNavigationView: View {
-    @ObservedObject var imageFetcher = ImageFetcher.shared
+    @ObservedObject var imageFetcher = ContentFetcher.shared
 
     var yearlyAssetsArray: [YearlyAssets] {
         imageFetcher.yearlyAssets

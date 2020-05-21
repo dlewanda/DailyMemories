@@ -1,5 +1,5 @@
 //
-//  ImageFetcher.swift
+//  ContentFetcher.swift
 //  Daily Memories
 //
 //  Created by David Lewanda on 2/17/20.
@@ -9,6 +9,11 @@
 import Photos
 import Combine
 import UIKit
+import AVKit
+
+enum AssetError: Error {
+    case videoIniCloud
+}
 
 struct Asset: Identifiable {
     var id = UUID()
@@ -32,23 +37,8 @@ struct YearlyAssets: Identifiable {
     }
 }
 
-extension PHAsset {
-    var creationDateString: String {
-        guard let creationDate = self.creationDate else {
-            return "Unknown"
-        }
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-
-        return dateFormatter.string(from: creationDate)
-//        return creationDate.description(with: Locale.current)
-    }
-}
-
-class ImageFetcher: ObservableObject {
-    public static let shared = ImageFetcher()
+class ContentFetcher: ObservableObject {
+    public static let shared = ContentFetcher()
 
     @Published var authorizationStatus = PHAuthorizationStatus.notDetermined
     @Published var yearlyAssets: [YearlyAssets] = [YearlyAssets]()
@@ -93,7 +83,7 @@ class ImageFetcher: ObservableObject {
                 promise(.success(.denied))
             case .notDetermined:
                 PHPhotoLibrary.requestAuthorization { status in
-                   promise(.success(status))
+                    promise(.success(status))
                 }
             case .restricted:
                 promise(.success(.restricted))
@@ -183,12 +173,37 @@ class ImageFetcher: ObservableObject {
         }
         return imagePromise
     }
+
+    public func loadVideo(asset: PHAsset) -> Future<AVAsset?, Error> {
+        let requestOptions = PHVideoRequestOptions()
+        requestOptions.isNetworkAccessAllowed = true
+
+        let videoPromise = Future<AVAsset?, Error> { promise in
+            let manager = PHImageManager.default()
+
+
+            manager.requestAVAsset(forVideo: asset,
+                                   options: requestOptions,
+                                   resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [AnyHashable : Any]?) in
+
+                                    guard let asset = asset else {
+                                        if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
+                                            isIniCloud.boolValue == true {
+                                            promise(.failure(AssetError.videoIniCloud))
+                                        }
+                                        return
+                                    }
+                                    promise(.success(asset))
+            })
+        }
+        return videoPromise
+    }
 }
 
 
 // MARK: -
 // MARK: Test Functions
-extension ImageFetcher {
+extension ContentFetcher {
     public func fetchTestAssets() -> [YearlyAssets] {
         guard let oldestAssetDate = fetchOldestAsset()?.creationDate else {
             return [YearlyAssets]()

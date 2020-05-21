@@ -10,7 +10,7 @@ import SwiftUI
 import Photos
 
 struct MainView: View {
-    @ObservedObject var imageFetcher = ImageFetcher.shared
+    @ObservedObject var imageFetcher = ContentFetcher.shared
     
     var body: some View {
         Group {

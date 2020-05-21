@@ -9,17 +9,17 @@
 import SwiftUI
 
 struct ContentDetailView: View {
-    @ObservedObject var imageModel: ImageModel
+    @ObservedObject var assetModel: AssetModel
     @State var presentFullscreenImage = false
 
     var image: Image {
-        Image(uiImage: imageModel.image ?? UIImage(systemName: "photo")!)
+        Image(uiImage: assetModel.image)
     }
 
     var body: some View {
         VStack {
             HStack {
-                Text(imageModel.creationDateString)
+                Text(assetModel.creationDateString)
                 Spacer()
                 //                Button(action: {
                 //                    self.showingSheet = true
@@ -35,7 +35,7 @@ struct ContentDetailView: View {
                 .onTapGesture(count: 2) {
                 self.presentFullscreenImage = true
             }
-            MapView(coordinate: imageModel.coordinate)
+            MapView(coordinate: assetModel.coordinate)
         }
         .sheet(isPresented: $presentFullscreenImage) {
             ContentViewerView(image: self.image, presentImage: self.$presentFullscreenImage)
@@ -45,6 +45,7 @@ struct ContentDetailView: View {
 
 struct ContentDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentDetailView(imageModel: ImageModel(asset: ImageFetcher.shared.fetchTestAsset(), imageQuality: .highQualityFormat))
+        ContentDetailView(assetModel: ImageModel(asset: ContentFetcher.shared.fetchTestAsset(),
+                                                 imageQuality: .highQualityFormat))
     }
 }
