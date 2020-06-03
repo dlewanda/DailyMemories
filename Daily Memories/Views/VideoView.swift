@@ -2,18 +2,30 @@
 //  VideoView.swift
 //  Daily Memories
 //
-//  Created by David Lewanda on 5/9/20.
+//  Created by David Lewanda on 6/2/20.
 //  Copyright © 2020 LewandaCode. All rights reserved.
 //
 
+import AVKit
 import SwiftUI
 
-struct VideoView: UIViewRepresentable {
-    let assetURL: URL
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<VideoView>) {
+struct VideoView: View {
+    private let player: AVPlayer
+
+    init(url: URL) {
+        player = AVPlayer(url: url)
     }
-    
-    func makeUIView(context: Context) -> UIView {
-        return PlayerUIView(assetURL: assetURL)
+
+    var body: some View {
+        VStack {
+          PlayerView(player: player)
+          PlayerControlsView(player: player)
+        }
+    }
+}
+
+struct VideoView_Previews: PreviewProvider {
+    static var previews: some View {
+        VideoView(url: URL(string: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8")!)
     }
 }

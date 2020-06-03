@@ -11,11 +11,8 @@ import AVKit
 
 class PlayerUIView: UIView {
     private let playerLayer = AVPlayerLayer()
-    init(assetURL: URL) {
+    init(player: AVPlayer) {
         super.init(frame: .zero)
-
-        let player = AVPlayer(url: assetURL)
-//        player.play()
 
         playerLayer.player = player
         layer.addSublayer(playerLayer)

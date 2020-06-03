@@ -21,7 +21,7 @@
 		A31AAB532401D1290025A1A5 /* YearNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB522401D1290025A1A5 /* YearNavigationView.swift */; };
 		A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */; };
 		A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB56240DFB250025A1A5 /* MainView.swift */; };
-		A3222B2A24678182009E56F2 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3222B2924678182009E56F2 /* VideoView.swift */; };
+		A3222B2A24678182009E56F2 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3222B2924678182009E56F2 /* PlayerView.swift */; };
 		A3222B2C246781D2009E56F2 /* PlayerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3222B2B246781D2009E56F2 /* PlayerUIView.swift */; };
 		A3222B2E247ACECD009E56F2 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3222B2D247ACECD009E56F2 /* AssetModel.swift */; };
 		A3222B30247ACF23009E56F2 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3222B2F247ACF23009E56F2 /* VideoModel.swift */; };
@@ -32,6 +32,8 @@
 		A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CA2419CA4100CCC47A /* MapView.swift */; };
 		A3BA05CD241DA46A00CCC47A /* View+PhoneStackNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */; };
 		A3BA05D0241DC14D00CCC47A /* ContentViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CF241DC14D00CCC47A /* ContentViewerView.swift */; };
+		A3E9C9FE2487163D003C12D9 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9C9FD2487163D003C12D9 /* PlayerControlsView.swift */; };
+		A3E9CA0024871691003C12D9 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9C9FF24871691003C12D9 /* VideoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +74,7 @@
 		A31AAB522401D1290025A1A5 /* YearNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearNavigationView.swift; sourceTree = "<group>"; };
 		A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationStatusView.swift; sourceTree = "<group>"; };
 		A31AAB56240DFB250025A1A5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		A3222B2924678182009E56F2 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		A3222B2924678182009E56F2 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		A3222B2B246781D2009E56F2 /* PlayerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUIView.swift; sourceTree = "<group>"; };
 		A3222B2D247ACECD009E56F2 /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
 		A3222B2F247ACF23009E56F2 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
@@ -84,6 +86,8 @@
 		A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+PhoneStackNavigationView.swift"; sourceTree = "<group>"; };
 		A3BA05CE241DABC000CCC47A /* Daily Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Daily Memories.entitlements"; sourceTree = "<group>"; };
 		A3BA05CF241DC14D00CCC47A /* ContentViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewerView.swift; sourceTree = "<group>"; };
+		A3E9C9FD2487163D003C12D9 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
+		A3E9C9FF24871691003C12D9 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,8 +193,10 @@
 				A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */,
 				A3971F092451350700C0AB69 /* YearListView.swift */,
 				A31AAB522401D1290025A1A5 /* YearNavigationView.swift */,
-				A3222B2924678182009E56F2 /* VideoView.swift */,
+				A3222B2924678182009E56F2 /* PlayerView.swift */,
 				A3222B2B246781D2009E56F2 /* PlayerUIView.swift */,
+				A3E9C9FD2487163D003C12D9 /* PlayerControlsView.swift */,
+				A3E9C9FF24871691003C12D9 /* VideoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,14 +344,16 @@
 			files = (
 				A3BA05D0241DC14D00CCC47A /* ContentViewerView.swift in Sources */,
 				A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */,
+				A3E9C9FE2487163D003C12D9 /* PlayerControlsView.swift in Sources */,
 				A3BA05CD241DA46A00CCC47A /* View+PhoneStackNavigationView.swift in Sources */,
 				A3222B30247ACF23009E56F2 /* VideoModel.swift in Sources */,
 				A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */,
 				A3069CD5243022350027702C /* NotificationSettingsView.swift in Sources */,
-				A3222B2A24678182009E56F2 /* VideoView.swift in Sources */,
+				A3222B2A24678182009E56F2 /* PlayerView.swift in Sources */,
 				A3971F0A2451350700C0AB69 /* YearListView.swift in Sources */,
 				A32848C72421ACD200959D74 /* ImageView.swift in Sources */,
 				A3222B2E247ACECD009E56F2 /* AssetModel.swift in Sources */,
+				A3E9CA0024871691003C12D9 /* VideoView.swift in Sources */,
 				A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */,
 				A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */,
 				A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */,
