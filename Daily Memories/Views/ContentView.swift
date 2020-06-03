@@ -12,7 +12,19 @@ struct ContentView: View {
     @ObservedObject var assetModel: AssetModel
 
     var body: some View {
-        ImageView(image: Image(uiImage: assetModel.image))
+        ZStack {
+            ImageView(image: assetModel.image)
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Image(systemName: assetModel.assetTypeString)
+                        .padding()
+                        .foregroundColor(.white
+                    )
+                }
+            }
+        }
     }
 }
 
