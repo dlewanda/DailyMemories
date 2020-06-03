@@ -153,7 +153,7 @@ class ContentFetcher: ObservableObject {
         requestOptions.isNetworkAccessAllowed = true
 
         let imagePromise = Future<UIImage, Never> { promise in
-            let manager = PHImageManager.default()
+            let manager = PHCachingImageManager.default()
 
             manager.requestImage(for: asset,
                                  targetSize: PHImageManagerMaximumSize,
