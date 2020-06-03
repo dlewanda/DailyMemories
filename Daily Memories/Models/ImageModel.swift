@@ -12,7 +12,6 @@ import UIKit
 class ImageModel: AssetModel {
     public init(asset: PHAsset, imageQuality: PHImageRequestOptionsDeliveryMode) {
         super.init(asset: asset)
-        image = UIImage(systemName: "photo")!
     }
 }
 

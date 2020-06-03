@@ -11,7 +11,7 @@ import Photos
 import AVKit
 
 class VideoModel: AssetModel {
-    @Published var avAsset: AVAsset?
+    @Published var urlAsset: AVURLAsset?
 
     fileprivate func getVideo() {
         ContentFetcher.shared.loadVideo(asset: self.phAsset)
@@ -19,13 +19,12 @@ class VideoModel: AssetModel {
             .replaceError(with: nil)
             .sink(receiveValue: { [weak self] avAsset in
                 self?.isLoading = false
-                self?.avAsset = avAsset
+                self?.urlAsset = avAsset as? AVURLAsset
             }).store(in: &cancellables)
     }
 
     public override init(asset: PHAsset) {
         super.init(asset: asset)
-        image = UIImage(systemName: "film")!
         getVideo()
     }
 }
