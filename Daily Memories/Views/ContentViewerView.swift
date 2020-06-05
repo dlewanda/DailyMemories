@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentViewerView: View {
-    @State var image: Image
+    @ObservedObject var assetModel: AssetModel
     @State var scale: CGFloat = 1.0
     @State var currentPosition = CGSize.zero
     @State var newPosition = CGSize.zero
@@ -56,6 +56,25 @@ struct ContentViewerView: View {
             })
     }
 
+    private func assetView() -> some View {
+        let assetView: AnyView
+
+        switch self.assetModel {
+        case is VideoModel:
+            guard let videoModel = assetModel as? VideoModel,
+                let urlAsset = videoModel.urlAsset else {
+                    fallthrough
+            }
+            assetView = AnyView(VideoView(url: urlAsset.url))
+        case is ImageModel:
+        fallthrough //ImageModel is the default
+        default:
+            assetView = AnyView(ImageView(image: self.assetModel.image))
+        }
+
+        return assetView
+    }
+
     var body: some View {
         VStack {
             HStack {
@@ -70,7 +89,7 @@ struct ContentViewerView: View {
 
             Spacer()
             
-            ImageView(image: image)
+            assetView()
                 .offset(x: self.currentPosition.width, y: self.currentPosition.height)
                 .scaleEffect(scale)
                 .clipped()
@@ -91,6 +110,8 @@ struct ContentViewerView: View {
 
 struct ContentViewerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewerView(image: Image(systemName: "photo.fill"), presentImage: .constant(true))
+        ContentViewerView(assetModel: ImageModel(asset: ContentFetcher.shared.fetchTestAsset(),
+                                                 imageQuality: .fastFormat),
+                          presentImage: .constant(true))
     }
 }

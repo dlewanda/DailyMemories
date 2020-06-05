@@ -35,7 +35,7 @@ struct ContentDetailView: View {
             MapView(coordinate: assetModel.coordinate)
         }
         .sheet(isPresented: $presentFullscreenImage) {
-            ContentViewerView(image: self.assetModel.image,
+            ContentViewerView(assetModel: self.assetModel,
                               presentImage: self.$presentFullscreenImage)
         }
     }

@@ -18,8 +18,7 @@ struct VideoView: View {
 
     var body: some View {
         VStack {
-          PlayerView(player: player)
-          PlayerControlsView(player: player)
+          PlayerViewController(player: player)
         }
     }
 }
