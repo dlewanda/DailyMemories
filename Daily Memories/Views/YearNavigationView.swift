@@ -23,7 +23,7 @@ struct YearNavigationView: View {
             Group {
                 if yearlyAssetsArray.isEmpty {
                     VStack {
-                        ImageView(image: Image(systemName: "photo.on.rectangle"))
+                        ImageView()
                         Text("No Memories for Today").font(.largeTitle)
                     }
                     .padding()

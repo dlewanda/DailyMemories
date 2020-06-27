@@ -9,7 +9,7 @@
 import Combine
 import Photos
 import MapKit
-import SwiftUI
+import UIKit
 
 extension PHAsset {
     var creationDateString: String {
@@ -40,7 +40,7 @@ class AssetModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
 
     @Published var loadingProgress: Double = 0.0
-    @Published var thumbnailImage: Image = Image(uiImage: UIImage(systemName: AssetTypeString.unknown.rawValue)!)
+    @Published var thumbnailImage: UIImage = UIImage(systemName: AssetTypeString.unknown.rawValue)!
 
     public var assetTypeString: String {
         switch self {
@@ -56,7 +56,7 @@ class AssetModel: ObservableObject {
     public init(asset: PHAsset) {
         self.phAsset = asset
         if let newImage = UIImage(systemName: assetTypeString) {
-            thumbnailImage = Image(uiImage: newImage)
+            thumbnailImage = newImage
         }
         getThumbnail()
     }
@@ -70,7 +70,7 @@ class AssetModel: ObservableObject {
         }
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] image in
-                self?.thumbnailImage = Image(uiImage: image)
+                self?.thumbnailImage = image
             })
             .store(in: &cancellables)
     }
