@@ -18,7 +18,6 @@ class VideoModel: AssetModel {
             .receive(on: DispatchQueue.main)
             .replaceError(with: nil)
             .sink(receiveValue: { [weak self] avAsset in
-                self?.isLoading = false
                 self?.urlAsset = avAsset as? AVURLAsset
             }).store(in: &cancellables)
     }

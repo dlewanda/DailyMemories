@@ -29,15 +29,19 @@ enum AssetTypeString: String {
     case unknown = "questionmark.square"
     case image = "photo"
     case video = "film"
+
+    func uiImage() -> UIImage {
+        return UIImage(systemName: self.rawValue)!
+    }
 }
 
 class AssetModel: ObservableObject {
-    @Published var isLoading = true
-    @Published var image: Image = Image(uiImage: UIImage(systemName: AssetTypeString.unknown.rawValue)!)
-
     var phAsset: PHAsset
     var cancellables = Set<AnyCancellable>()
-    
+
+    @Published var loadingProgress: Double = 0.0
+    @Published var thumbnailImage: Image = Image(uiImage: UIImage(systemName: AssetTypeString.unknown.rawValue)!)
+
     public var assetTypeString: String {
         switch self {
         case is ImageModel:
@@ -52,18 +56,21 @@ class AssetModel: ObservableObject {
     public init(asset: PHAsset) {
         self.phAsset = asset
         if let newImage = UIImage(systemName: assetTypeString) {
-            image = Image(uiImage: newImage)
+            thumbnailImage = Image(uiImage: newImage)
         }
-        getImage(.highQualityFormat)
+        getThumbnail()
     }
 
-    func getImage(_ imageQuality: PHImageRequestOptionsDeliveryMode) {
+    func getThumbnail() {
         ContentFetcher.shared.loadImage(asset: self.phAsset,
-                                        quality: imageQuality)
+                                        quality: .opportunistic) { (progress, error, stop, info) in
+                                            DispatchQueue.main.async {
+                                                self.loadingProgress = progress
+                                            }
+        }
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] image in
-                self?.isLoading = false
-                self?.image = Image(uiImage: image)
+                self?.thumbnailImage = Image(uiImage: image)
             })
             .store(in: &cancellables)
     }

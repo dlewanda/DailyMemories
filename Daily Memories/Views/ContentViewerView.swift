@@ -67,9 +67,13 @@ struct ContentViewerView: View {
             }
             assetView = AnyView(VideoView(url: urlAsset.url))
         case is ImageModel:
-        fallthrough //ImageModel is the default
+            guard let imageModel = assetModel as? ImageModel,
+                let image = imageModel.image else {
+                    fallthrough
+            }
+            assetView = AnyView(ImageView(image: Image(uiImage: image)))
         default:
-            assetView = AnyView(ImageView(image: self.assetModel.image))
+            assetView = AnyView(ImageView(image: self.assetModel.thumbnailImage))
         }
 
         return assetView

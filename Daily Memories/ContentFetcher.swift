@@ -147,16 +147,23 @@ class ContentFetcher: ObservableObject {
         yearlyAssets = fetchAssets()
     }
 
-    public func loadImage(asset: PHAsset, quality: PHImageRequestOptionsDeliveryMode) -> Future<UIImage, Never> {
+    public func loadImage(asset: PHAsset,
+                          quality: PHImageRequestOptionsDeliveryMode = .opportunistic,
+                          size: CGSize = PHImageManagerMaximumSize,
+                          progressHandler: PHAssetImageProgressHandler? = nil) -> Future<UIImage, Never> {
         let requestOptions = PHImageRequestOptions()
         requestOptions.deliveryMode = quality
+        requestOptions.resizeMode = .exact
         requestOptions.isNetworkAccessAllowed = true
+        if progressHandler != nil {
+            requestOptions.progressHandler = progressHandler
+        }
 
         let imagePromise = Future<UIImage, Never> { promise in
             let manager = PHCachingImageManager.default()
 
             manager.requestImage(for: asset,
-                                 targetSize: PHImageManagerMaximumSize,
+                                 targetSize: size,
                                  contentMode: .aspectFit,
                                  options: requestOptions) { img, info in
                                     guard let img = img else {
@@ -179,7 +186,7 @@ class ContentFetcher: ObservableObject {
         requestOptions.isNetworkAccessAllowed = true
 
         let videoPromise = Future<AVAsset?, Error> { promise in
-            let manager = PHImageManager.default()
+            let manager = PHCachingImageManager.default()
 
 
             manager.requestAVAsset(forVideo: asset,
