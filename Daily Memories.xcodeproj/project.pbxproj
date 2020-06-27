@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A3069CD5243022350027702C /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3069CD4243022350027702C /* NotificationSettingsView.swift */; };
 		A3069CD7243027E40027702C /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3069CD6243027E40027702C /* NotificationsManager.swift */; };
+		A30F6A36248D4087001B1608 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F6A35248D4087001B1608 /* ShareViewController.swift */; };
 		A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */; };
 		A31AAB2323FB691C0025A1A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */; };
 		A31AAB2523FB691C0025A1A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB2423FB691C0025A1A5 /* ContentView.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		A3069CD4243022350027702C /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		A3069CD6243027E40027702C /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		A30F6A35248D4087001B1608 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A31AAB1D23FB691C0025A1A5 /* Daily Memories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Memories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A30F6A37248D409E001B1608 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A3222B2924678182009E56F2 /* PlayerViewController.swift */,
+				A30F6A35248D4087001B1608 /* ShareViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		A31AAB1423FB691C0025A1A5 = {
 			isa = PBXGroup;
 			children = (
@@ -136,14 +147,15 @@
 			children = (
 				A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */,
 				A31AAB2623FB69200025A1A5 /* Assets.xcassets */,
-				A3BA05CE241DABC000CCC47A /* Daily Memories.entitlements */,
 				A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */,
+				A3BA05CE241DABC000CCC47A /* Daily Memories.entitlements */,
 				A31AAB2E23FB69200025A1A5 /* Info.plist */,
 				A31AAB2B23FB69200025A1A5 /* LaunchScreen.storyboard */,
 				A3BA05C92419063500CCC47A /* Models */,
 				A3069CD6243027E40027702C /* NotificationsManager.swift */,
 				A31AAB2823FB69200025A1A5 /* Preview Content */,
 				A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */,
+				A30F6A37248D409E001B1608 /* ViewControllers */,
 				A3BA05C82419062F00CCC47A /* Views */,
 			);
 			path = "Daily Memories";
@@ -189,7 +201,6 @@
 				A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */,
 				A3971F092451350700C0AB69 /* YearListView.swift */,
 				A31AAB522401D1290025A1A5 /* YearNavigationView.swift */,
-				A3222B2924678182009E56F2 /* PlayerViewController.swift */,
 				A3E9C9FF24871691003C12D9 /* VideoView.swift */,
 			);
 			path = Views;
@@ -336,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30F6A36248D4087001B1608 /* ShareViewController.swift in Sources */,
 				A3BA05D0241DC14D00CCC47A /* ContentViewerView.swift in Sources */,
 				A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */,
 				A3BA05CD241DA46A00CCC47A /* View+PhoneStackNavigationView.swift in Sources */,
