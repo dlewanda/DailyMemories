@@ -12,6 +12,7 @@ import Combine
 struct Notification {
     var id: String
     var title: String
+    var subtitle: String
 }
 
 class NotificationsManager: ObservableObject {
@@ -24,6 +25,8 @@ class NotificationsManager: ObservableObject {
                 if notificationTime == Date.distantFuture {
                     // if enabled but no date set, schedule one for right now
                     scheduleNotification(at: Date())
+                } else {
+                    scheduleNotification(at: notificationTime)
                 }
             } else {
                 cancelNotification()
@@ -42,7 +45,8 @@ class NotificationsManager: ObservableObject {
     }
 
     private var notification = Notification(id: UUID().uuidString,
-                                            title: "Time for your daily trip down memory lane!")
+                                            title: "Your Daily Memory",
+                                            subtitle: "Time for your daily trip down memory lane!")
     private var requestCancellable: Cancellable?
 
     private init() {
@@ -103,7 +107,8 @@ class NotificationsManager: ObservableObject {
             case .authorized, .provisional:
                 let content = UNMutableNotificationContent()
                 content.title = strongSelf.notification.title
-                
+                content.subtitle = strongSelf.notification.subtitle
+
                 let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: timeComponents, repeats: true)
                 let request = UNNotificationRequest(identifier: strongSelf.notification.id,
