@@ -47,7 +47,7 @@ struct ContentDetailView: View {
                 Image(systemName: assetModel.assetTypeString)
             }
             .padding()
-            ImageView(image: assetModel.thumbnailImage)
+            ImageView(image: $assetModel.thumbnailImage)
                 .onTapGesture(count: 2) {
                     self.showSheet = true
                     self.sheet = .contentViewer

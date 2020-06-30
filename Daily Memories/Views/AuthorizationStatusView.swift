@@ -29,7 +29,7 @@ struct AuthorizationStatusView: View {
     
     var body: some View {
         VStack {
-            ImageView(image: Image(systemName: "photo.on.rectangle.fill"))
+            ImageView(image: .constant(UIImage(systemName: "photo.on.rectangle.fill")!))
             Text(statusString)
                 .font(.title)
         }

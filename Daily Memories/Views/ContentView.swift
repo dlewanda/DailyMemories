@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            ImageView(image: assetModel.thumbnailImage)
+            ImageView(image: $assetModel.thumbnailImage)
             VStack {
                 Spacer()
                 HStack {

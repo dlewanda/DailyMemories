@@ -71,9 +71,9 @@ struct ContentViewerView: View {
                 let image = imageModel.image else {
                     fallthrough
             }
-            assetView = AnyView(ImageView(image: image))
+            assetView = AnyView(ImageView(uiImage: image))
         default:
-            assetView = AnyView(ImageView(image: self.assetModel.thumbnailImage))
+            assetView = AnyView(ImageView(image: self.$assetModel.thumbnailImage))
         }
 
         return assetView

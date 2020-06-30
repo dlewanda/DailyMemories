@@ -18,6 +18,7 @@ class ImageModel: AssetModel {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] image in
                 self?.image = image
+                self?.thumbnailImage = image //replace thumbnail when full-res image loads
             }).store(in: &cancellables)
     }
 
