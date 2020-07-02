@@ -29,6 +29,7 @@ enum AssetTypeString: String {
     case unknown = "questionmark.square"
     case image = "photo"
     case video = "film"
+    case livePhoto = "livephoto"
 
     func uiImage() -> UIImage {
         return UIImage(systemName: self.rawValue)!
@@ -48,6 +49,8 @@ class AssetModel: ObservableObject {
             return AssetTypeString.image.rawValue
         case is VideoModel:
             return AssetTypeString.video.rawValue
+        case is LivePhotoModel:
+            return AssetTypeString.livePhoto.rawValue
         default:
             return AssetTypeString.unknown.rawValue
         }

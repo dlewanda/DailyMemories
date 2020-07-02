@@ -146,7 +146,11 @@ class ContentFetcher: ObservableObject {
     public func refreshAssets() {
         yearlyAssets = fetchAssets()
     }
+}
 
+// MARK: -
+// MARK: Image
+extension ContentFetcher {
     public func loadImage(asset: PHAsset,
                           quality: PHImageRequestOptionsDeliveryMode = .opportunistic,
                           size: CGSize = PHImageManagerMaximumSize,
@@ -180,7 +184,11 @@ class ContentFetcher: ObservableObject {
         }
         return imagePromise
     }
+}
 
+// MARK: -
+// MARK: Video
+extension ContentFetcher {
     public func loadVideo(asset: PHAsset) -> Future<AVAsset?, Error> {
         let requestOptions = PHVideoRequestOptions()
         requestOptions.isNetworkAccessAllowed = true
@@ -207,6 +215,40 @@ class ContentFetcher: ObservableObject {
     }
 }
 
+// MARK: -
+// MARK: Live Photo
+extension ContentFetcher {
+    public func loadLivePhoto(asset: PHAsset,
+                              quality: PHImageRequestOptionsDeliveryMode = .opportunistic,
+                              size: CGSize = PHImageManagerMaximumSize,
+                              progressHandler: PHAssetImageProgressHandler? = nil) -> Future<PHLivePhoto?, Error> {
+        let requestOptions = PHLivePhotoRequestOptions()
+        requestOptions.deliveryMode = quality
+        requestOptions.isNetworkAccessAllowed = true
+        if progressHandler != nil {
+            requestOptions.progressHandler = progressHandler
+        }
+        let livePhotoPromise = Future<PHLivePhoto?, Error> { promise in
+            let manager = PHCachingImageManager.default()
+
+            manager.requestLivePhoto(for: asset,
+                                     targetSize: size,
+                                     contentMode: .aspectFit,
+                                     options: requestOptions) { img, info in
+                                        guard let img = img else {
+                                            if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
+                                                isIniCloud.boolValue == true {
+                                                promise(.failure(AssetError.videoIniCloud))
+                                            }
+                                            return
+                                        }
+                                        promise(.success(img))
+            }
+        }
+
+        return livePhotoPromise
+    }
+}
 
 // MARK: -
 // MARK: Test Functions

@@ -10,6 +10,7 @@
 		A3069CD5243022350027702C /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3069CD4243022350027702C /* NotificationSettingsView.swift */; };
 		A3069CD7243027E40027702C /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3069CD6243027E40027702C /* NotificationsManager.swift */; };
 		A30F6A36248D4087001B1608 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F6A35248D4087001B1608 /* ShareViewController.swift */; };
+		A30F6A3924A7A58F001B1608 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30F6A3824A7A58F001B1608 /* ProgressView.swift */; };
 		A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */; };
 		A31AAB2323FB691C0025A1A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */; };
 		A31AAB2523FB691C0025A1A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB2423FB691C0025A1A5 /* ContentView.swift */; };
@@ -32,6 +33,8 @@
 		A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CA2419CA4100CCC47A /* MapView.swift */; };
 		A3BA05CD241DA46A00CCC47A /* View+PhoneStackNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */; };
 		A3BA05D0241DC14D00CCC47A /* ContentViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CF241DC14D00CCC47A /* ContentViewerView.swift */; };
+		A3E3DC5B24AACE4C0076798E /* LivePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC5A24AACE4C0076798E /* LivePhotoView.swift */; };
+		A3E3DC5D24AC167F0076798E /* LivePhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC5C24AC167F0076798E /* LivePhotoModel.swift */; };
 		A3E9CA0024871691003C12D9 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9C9FF24871691003C12D9 /* VideoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,7 @@
 		A3069CD4243022350027702C /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		A3069CD6243027E40027702C /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		A30F6A35248D4087001B1608 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		A30F6A3824A7A58F001B1608 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		A31AAB1D23FB691C0025A1A5 /* Daily Memories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Memories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A31AAB2223FB691C0025A1A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 		A3BA05CC241DA46A00CCC47A /* View+PhoneStackNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+PhoneStackNavigationView.swift"; sourceTree = "<group>"; };
 		A3BA05CE241DABC000CCC47A /* Daily Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Daily Memories.entitlements"; sourceTree = "<group>"; };
 		A3BA05CF241DC14D00CCC47A /* ContentViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewerView.swift; sourceTree = "<group>"; };
+		A3E3DC5A24AACE4C0076798E /* LivePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhotoView.swift; sourceTree = "<group>"; };
+		A3E3DC5C24AC167F0076798E /* LivePhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhotoModel.swift; sourceTree = "<group>"; };
 		A3E9C9FF24871691003C12D9 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +208,8 @@
 				A3971F092451350700C0AB69 /* YearListView.swift */,
 				A31AAB522401D1290025A1A5 /* YearNavigationView.swift */,
 				A3E9C9FF24871691003C12D9 /* VideoView.swift */,
+				A30F6A3824A7A58F001B1608 /* ProgressView.swift */,
+				A3E3DC5A24AACE4C0076798E /* LivePhotoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 			children = (
 				A3222B2D247ACECD009E56F2 /* AssetModel.swift */,
 				A3BA05C6241904B100CCC47A /* ImageModel.swift */,
+				A3E3DC5C24AC167F0076798E /* LivePhotoModel.swift */,
 				A3222B2F247ACF23009E56F2 /* VideoModel.swift */,
 			);
 			path = Models;
@@ -351,11 +360,13 @@
 				A3BA05D0241DC14D00CCC47A /* ContentViewerView.swift in Sources */,
 				A31AAB2123FB691C0025A1A5 /* AppDelegate.swift in Sources */,
 				A3BA05CD241DA46A00CCC47A /* View+PhoneStackNavigationView.swift in Sources */,
+				A3E3DC5B24AACE4C0076798E /* LivePhotoView.swift in Sources */,
 				A3222B30247ACF23009E56F2 /* VideoModel.swift in Sources */,
 				A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */,
 				A3069CD5243022350027702C /* NotificationSettingsView.swift in Sources */,
 				A3222B2A24678182009E56F2 /* PlayerViewController.swift in Sources */,
 				A3971F0A2451350700C0AB69 /* YearListView.swift in Sources */,
+				A3E3DC5D24AC167F0076798E /* LivePhotoModel.swift in Sources */,
 				A32848C72421ACD200959D74 /* ImageView.swift in Sources */,
 				A3222B2E247ACECD009E56F2 /* AssetModel.swift in Sources */,
 				A3E9CA0024871691003C12D9 /* VideoView.swift in Sources */,
@@ -368,6 +379,7 @@
 				A3069CD7243027E40027702C /* NotificationsManager.swift in Sources */,
 				A31AAB2323FB691C0025A1A5 /* SceneDelegate.swift in Sources */,
 				A31AAB2523FB691C0025A1A5 /* ContentView.swift in Sources */,
+				A30F6A3924A7A58F001B1608 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

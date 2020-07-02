@@ -72,6 +72,12 @@ struct ContentViewerView: View {
                     fallthrough
             }
             assetView = AnyView(ImageView(uiImage: image))
+        case is LivePhotoModel:
+            guard let livePhotoModel = assetModel as? LivePhotoModel,
+                let livePhoto = livePhotoModel.livePhoto else {
+                    fallthrough
+            }
+            assetView = AnyView(LivePhotoView(livePhoto: livePhoto))
         default:
             assetView = AnyView(ImageView(image: self.$assetModel.thumbnailImage))
         }
