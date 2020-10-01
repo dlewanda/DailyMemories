@@ -26,8 +26,8 @@ struct ContentDetailView: View {
             assetView = AnyView(ContentViewerView(assetModel: self.assetModel,
                                                   presentImage: self.$showSheet))
         case .share:
-            assetView = AnyView(ShareViewController(activityItems: ["Share your Daily Memory",
-                                                                    self.$assetModel.thumbnailImage],
+            assetView = AnyView(ShareViewController(activityItems: ["Check out what happened today in \(self.assetModel.phAsset.year)",
+                                                                    self.assetModel.thumbnailImage],
                                                     excludedActivityTypes: [.saveToCameraRoll]))
         }
         return assetView
