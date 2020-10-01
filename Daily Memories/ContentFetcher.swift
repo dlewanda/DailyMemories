@@ -77,6 +77,8 @@ class ContentFetcher: ObservableObject {
     private func requestPhotosAccessPromise() -> Future<PHAuthorizationStatus, Never> {
         let authorize = Future<PHAuthorizationStatus, Never> { promise in
             switch PHPhotoLibrary.authorizationStatus() {
+            case .limited:
+                fallthrough //presumably limited should work like authorized, just return less
             case .authorized:
                 promise(.success(.authorized))
             case .denied:
