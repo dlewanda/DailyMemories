@@ -41,7 +41,7 @@ class ContentFetcher: ObservableObject {
     public static let shared = ContentFetcher()
 
     @Published var authorizationStatus = PHAuthorizationStatus.notDetermined
-    @Published var yearlyAssets: [YearlyAssets] = [YearlyAssets]()
+    @Published public var yearlyAssets: [YearlyAssets] = [YearlyAssets]()
     private var requestCancellable: Cancellable?
 
     public func requestPhotoAccess() {
@@ -51,7 +51,7 @@ class ContentFetcher: ObservableObject {
             .sink(receiveValue: { [weak self] authorizationStatus in
                 self?.authorizationStatus = authorizationStatus
                 if let strongSelf = self, strongSelf.authorizationStatus == .authorized {
-                    strongSelf.yearlyAssets = strongSelf.fetchAssets(for: Date())
+                    strongSelf.yearlyAssets = strongSelf.fetchDailyAssets(for: Date())
                 }
             })
     }
@@ -99,7 +99,26 @@ class ContentFetcher: ObservableObject {
         return authorize
     }
 
-    private func fetchAssets(for date: Date = Date()) -> [YearlyAssets] {
+    /// fetches all assets for a specific date
+    public func fetchAssets(for date: Date) -> PHFetchResult<PHAsset> {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.current
+        let startOfDay = calendar.startOfDay(for: date)
+        let endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: date)!
+
+        let todayAssetOptions = PHFetchOptions()
+        todayAssetOptions.predicate = NSPredicate(format: "creationDate > %@ AND creationDate < %@",
+                                                  startOfDay as NSDate,
+                                                  endOfDay as NSDate)
+        todayAssetOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+
+        let todayAssets: PHFetchResult<PHAsset> = PHAsset.fetchAssets(with: todayAssetOptions)
+
+        return todayAssets
+    }
+
+    /// fetches assets for the day specified going back over all available years
+    private func fetchDailyAssets(for date: Date = Date()) -> [YearlyAssets] {
         
         var assets = [YearlyAssets]()
 
@@ -110,29 +129,21 @@ class ContentFetcher: ObservableObject {
         var photoDate = date
         var calendar = Calendar.current
         calendar.timeZone = TimeZone.current
-        let today = Date()
-        let components = calendar.dateComponents([.year, .month, .day], from: today)
+
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
         let month = components.month ?? 0
         let day = components.day ?? 0
         var year = components.year ?? 0
 
         while photoDate >= oldestAssetDate {
-            let startOfDay = calendar.startOfDay(for: photoDate)
-            let endOfDay = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: photoDate)!
-            let todayPhotoOptions = PHFetchOptions()
-            todayPhotoOptions.predicate = NSPredicate(format: "creationDate > %@ AND creationDate < %@",
-                                                      startOfDay as NSDate,
-                                                      endOfDay as NSDate)
-            todayPhotoOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+            let todayAssets = fetchAssets(for: photoDate)
 
-            let todayPhotos: PHFetchResult<PHAsset> = PHAsset.fetchAssets(with: todayPhotoOptions)
-
-            if todayPhotos.count > 0 {
+            if todayAssets.count > 0 {
                 var yearlyAssets = YearlyAssets(year: year)
 
                 print("-----------")
-                print("\(photoDate) photo count: \(todayPhotos.count)")
-                todayPhotos.enumerateObjects { (asset, index, stop) in
+                print("\(photoDate) photo count: \(todayAssets.count)")
+                todayAssets.enumerateObjects { (asset, index, stop) in
                     yearlyAssets.assets.append(Asset(phAsset: asset))
                 }
                 assets.append(yearlyAssets)
@@ -146,7 +157,7 @@ class ContentFetcher: ObservableObject {
     }
 
     public func refreshAssets() {
-        yearlyAssets = fetchAssets()
+        yearlyAssets = fetchDailyAssets()
     }
 }
 
@@ -260,7 +271,7 @@ extension ContentFetcher {
             return [YearlyAssets]()
         }
 
-        return fetchAssets(for: oldestAssetDate)
+        return fetchDailyAssets(for: oldestAssetDate)
     }
 
     public func fetchTestYearlyAssets() -> YearlyAssets {

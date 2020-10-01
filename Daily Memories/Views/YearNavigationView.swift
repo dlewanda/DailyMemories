@@ -10,10 +10,10 @@ import Photos.PHAsset
 import SwiftUI
 
 struct YearNavigationView: View {
-    @ObservedObject var imageFetcher = ContentFetcher.shared
+    @ObservedObject var contentFetcher = ContentFetcher.shared
 
     var yearlyAssetsArray: [YearlyAssets] {
-        imageFetcher.yearlyAssets
+        contentFetcher.yearlyAssets
     }
 
     @State var showingNotificationSettings = false
@@ -35,7 +35,7 @@ struct YearNavigationView: View {
             .navigationBarTitle(Text("Daily Memories").font(.largeTitle))
             .navigationBarItems(
                 leading: Button(action: {
-                    self.imageFetcher.refreshAssets()
+                    self.contentFetcher.refreshAssets()
                 }) {
                     Image(systemName:"arrow.up.arrow.down.circle.fill").font(.largeTitle)
                 },

@@ -16,10 +16,6 @@ struct YearListView: View {
         imageFetcher.yearlyAssets
     }
 
-    fileprivate func createContentView(for assetModel: AssetModel) -> ContentView {
-        return ContentView(assetModel: assetModel)
-    }
-
     fileprivate func createNavigationLink(for asset: Asset) -> NavigationLink<ContentView, ContentDetailView> {
         //TODO Switch on asset type
         let assetModel: AssetModel
@@ -33,7 +29,7 @@ struct YearListView: View {
         }
         let contentDetailView = ContentDetailView(assetModel: assetModel)
         return NavigationLink(destination: contentDetailView) {
-            createContentView(for: assetModel)
+            ContentView(assetModel: assetModel)
         }
     }
 

@@ -23,6 +23,18 @@ extension PHAsset {
 
         return dateFormatter.string(from: creationDate)
     }
+
+    var year: Int {
+        guard let creationDate = self.creationDate else {
+            return 0
+        }
+
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.current
+
+        let components = calendar.dateComponents([.year], from: creationDate)
+        return components.year ?? 0
+    }
 }
 
 enum AssetTypeString: String {
