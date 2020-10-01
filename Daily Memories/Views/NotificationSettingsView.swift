@@ -37,6 +37,13 @@ struct NotificationSettingsView: View {
                                    displayedComponents: .hourAndMinute)
                         .labelsHidden()
                     }
+                    #if DEBUG
+                    Button(action: {
+                        self.notificationsManager.scheduleNotification(at: Date().advanced(by: 15))
+                    }) {
+                        Text("Test notification")
+                    }
+                    #endif
                     Spacer()
                 }
                 .padding()

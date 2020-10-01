@@ -4,10 +4,38 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Daily Memories App Extension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Daily Memories.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A31AAB1C23FB691C0025A1A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A31AAB3223FB69200025A1A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A31AAB3D23FB69210025A1A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A3E3DC6124AE79770076798E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

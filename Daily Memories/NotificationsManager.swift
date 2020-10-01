@@ -12,10 +12,10 @@ import Combine
 struct Notification {
     var id: String
     var title: String
-    var subtitle: String
+    var body: String
 }
 
-class NotificationsManager: ObservableObject {
+@objc class NotificationsManager: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     static let shared = NotificationsManager()
 
     @Published var notificationsAuthorized: Bool = false
@@ -44,23 +44,46 @@ class NotificationsManager: ObservableObject {
         }
     }
 
+    private let notificationCategoryIdentifier = "dailyMemoriesNotification"
     private var notification = Notification(id: UUID().uuidString,
                                             title: "Your Daily Memory",
-                                            subtitle: "Time for your daily trip down memory lane!")
+                                            body: "Time for your daily trip down memory lane!")
     private var requestCancellable: Cancellable?
+    private var imageCancellable: Cancellable?
 
-    private init() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+    private override init() {
+        super.init()
+        
+        let currentUserNotificationsCenter = UNUserNotificationCenter.current()
+
+        currentUserNotificationsCenter.delegate = self
+
+        let dailyMemoriesNotificationCategory = UNNotificationCategory(identifier: notificationCategoryIdentifier,
+                                                                       actions: [],
+                                                                       intentIdentifiers: [],
+                                                                       options: [])
+
+        currentUserNotificationsCenter.setNotificationCategories([dailyMemoriesNotificationCategory])
+
+        currentUserNotificationsCenter.getPendingNotificationRequests { requests in
             for request in requests {
                 guard let calendarTrigger = request.trigger as? UNCalendarNotificationTrigger,
                     let triggerTime = Calendar.current.date(from: calendarTrigger.dateComponents) else {
                         break
                 }
 
-                self.notificationTime = triggerTime
-                self.schedulingNotificationEnabled = true
+                DispatchQueue.main.async {
+                    self.notificationTime = triggerTime
+                    self.schedulingNotificationEnabled = true
+                }
             }
         }
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)-> Void) {
+        completionHandler([.alert, .badge, .sound])
     }
 
     private func requestPermissionPromise() -> Future<Bool, Never> {
@@ -68,7 +91,9 @@ class NotificationsManager: ObservableObject {
             UNUserNotificationCenter
                 .current()
                 .requestAuthorization(options: [.alert, .badge, .alert]) { granted, error in
-                    self.notificationsAuthorized = granted
+                    DispatchQueue.main.async {
+                        self.notificationsAuthorized = granted
+                    }
                     if granted == true {
                         promise(.success(granted))
                     } else {
@@ -107,16 +132,47 @@ class NotificationsManager: ObservableObject {
             case .authorized, .provisional:
                 let content = UNMutableNotificationContent()
                 content.title = strongSelf.notification.title
-                content.subtitle = strongSelf.notification.subtitle
+                content.body = strongSelf.notification.body
+                content.categoryIdentifier = strongSelf.notificationCategoryIdentifier
+                let assets = ContentFetcher.shared.fetchAssets(for: time)
+                if let asset = assets.firstObject {
+                    //if there's an asset for the notification, attach the associated thumbnail
+                    self?.imageCancellable = ContentFetcher.shared.loadImage(asset: asset,
+                                                                             quality: .opportunistic) { (progress, error, stop, info) in
+                                                                                DispatchQueue.main.async {
+                                                                                    //                                                self.loadingProgress = progress
+                                                                                }
+                    }
+                    .receive(on: DispatchQueue.main)
+                    .sink(receiveValue: { [weak self] image in
+                        let url = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+                        let fileURL = url.appendingPathComponent("someImageName",
+                                                                 isDirectory: false).appendingPathExtension("jpeg")
+                        do {
+                            try image.jpegData(compressionQuality: 1.0)?.write(to: fileURL)
 
-                let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: timeComponents, repeats: true)
-                let request = UNNotificationRequest(identifier: strongSelf.notification.id,
-                                                    content: content,
-                                                    trigger: trigger)
-                UNUserNotificationCenter.current().add(request) { [weak self] error in
-                    guard error == nil else { return }
-                    print("Scheduling notification with id: \(self?.notification.id ?? "Unknown Notification ID?!?")")
+                            if let notificationId = self?.notification.id,
+                                let attachment = try? UNNotificationAttachment(identifier: notificationId,
+                                                                         url: url,
+                                                                         options: nil) {
+                                // where myImage is any UIImage
+                                content.attachments = [attachment]
+                            }
+
+                            let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
+                            let trigger = UNCalendarNotificationTrigger(dateMatching: timeComponents, repeats: true)
+                            let request = UNNotificationRequest(identifier: strongSelf.notification.id,
+                                                                content: content,
+                                                                trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { [weak self] error in
+                                guard error == nil else { return }
+                                print("Scheduling notification with id: \(self?.notification.id ?? "Unknown Notification ID?!?")")
+                            }
+
+                        } catch {
+                            print("Could not attach image: ", error)
+                        }
+                    })
                 }
 
             default:
@@ -126,6 +182,7 @@ class NotificationsManager: ObservableObject {
     }
 
     public func cancelNotification() {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification.id])
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        //        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification.id])
     }
 }

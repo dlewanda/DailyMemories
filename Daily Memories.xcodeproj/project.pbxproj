@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,12 @@
 		A3BA05D0241DC14D00CCC47A /* ContentViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CF241DC14D00CCC47A /* ContentViewerView.swift */; };
 		A3E3DC5B24AACE4C0076798E /* LivePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC5A24AACE4C0076798E /* LivePhotoView.swift */; };
 		A3E3DC5D24AC167F0076798E /* LivePhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC5C24AC167F0076798E /* LivePhotoModel.swift */; };
+		A3E3DC6524AE79770076798E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E3DC6424AE79770076798E /* UserNotifications.framework */; };
+		A3E3DC6724AE79770076798E /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E3DC6624AE79770076798E /* UserNotificationsUI.framework */; };
+		A3E3DC6A24AE79770076798E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC6924AE79770076798E /* NotificationViewController.swift */; };
+		A3E3DC6D24AE79770076798E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E3DC6B24AE79770076798E /* MainInterface.storyboard */; };
+		A3E3DC7124AE79770076798E /* Daily Memories App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A3E3DC7624AE7CD50076798E /* ContentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */; };
 		A3E9CA0024871691003C12D9 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9C9FF24871691003C12D9 /* VideoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +59,28 @@
 			remoteGlobalIDString = A31AAB1C23FB691C0025A1A5;
 			remoteInfo = "Daily Memories";
 		};
+		A3E3DC6F24AE79770076798E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3E3DC6124AE79770076798E;
+			remoteInfo = "Daily Memories App Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A3E3DC7524AE79770076798E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A3E3DC7124AE79770076798E /* Daily Memories App Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A3069CD4243022350027702C /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
@@ -91,6 +118,12 @@
 		A3BA05CF241DC14D00CCC47A /* ContentViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewerView.swift; sourceTree = "<group>"; };
 		A3E3DC5A24AACE4C0076798E /* LivePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhotoView.swift; sourceTree = "<group>"; };
 		A3E3DC5C24AC167F0076798E /* LivePhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhotoModel.swift; sourceTree = "<group>"; };
+		A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Daily Memories App Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3E3DC6424AE79770076798E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		A3E3DC6624AE79770076798E /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		A3E3DC6924AE79770076798E /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		A3E3DC6C24AE79770076798E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		A3E3DC6E24AE79770076798E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3E9C9FF24871691003C12D9 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +149,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A3E3DC5F24AE79770076798E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3E3DC6724AE79770076798E /* UserNotificationsUI.framework in Frameworks */,
+				A3E3DC6524AE79770076798E /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -134,6 +176,8 @@
 				A31AAB1F23FB691C0025A1A5 /* Daily Memories */,
 				A31AAB3623FB69200025A1A5 /* Daily MemoriesTests */,
 				A31AAB4123FB69210025A1A5 /* Daily MemoriesUITests */,
+				A3E3DC6824AE79770076798E /* Daily Memories App Extension */,
+				A3E3DC6324AE79770076798E /* Frameworks */,
 				A31AAB1E23FB691C0025A1A5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,6 +188,7 @@
 				A31AAB1D23FB691C0025A1A5 /* Daily Memories.app */,
 				A31AAB3323FB69200025A1A5 /* Daily MemoriesTests.xctest */,
 				A31AAB3E23FB69210025A1A5 /* Daily MemoriesUITests.xctest */,
+				A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +270,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A3E3DC6324AE79770076798E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3E3DC6424AE79770076798E /* UserNotifications.framework */,
+				A3E3DC6624AE79770076798E /* UserNotificationsUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3E3DC6824AE79770076798E /* Daily Memories App Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A3E3DC6924AE79770076798E /* NotificationViewController.swift */,
+				A3E3DC6B24AE79770076798E /* MainInterface.storyboard */,
+				A3E3DC6E24AE79770076798E /* Info.plist */,
+			);
+			path = "Daily Memories App Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,10 +299,12 @@
 				A31AAB1923FB691C0025A1A5 /* Sources */,
 				A31AAB1A23FB691C0025A1A5 /* Frameworks */,
 				A31AAB1B23FB691C0025A1A5 /* Resources */,
+				A3E3DC7524AE79770076798E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A3E3DC7024AE79770076798E /* PBXTargetDependency */,
 			);
 			name = "Daily Memories";
 			productName = "Daily Memories";
@@ -281,13 +347,30 @@
 			productReference = A31AAB3E23FB69210025A1A5 /* Daily MemoriesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		A3E3DC6124AE79770076798E /* Daily Memories App Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3E3DC7224AE79770076798E /* Build configuration list for PBXNativeTarget "Daily Memories App Extension" */;
+			buildPhases = (
+				A3E3DC5E24AE79770076798E /* Sources */,
+				A3E3DC5F24AE79770076798E /* Frameworks */,
+				A3E3DC6024AE79770076798E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Daily Memories App Extension";
+			productName = "Daily Memories App Extension";
+			productReference = A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A31AAB1523FB691C0025A1A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = LewandaCode;
 				TargetAttributes = {
@@ -301,6 +384,9 @@
 					A31AAB3D23FB69210025A1A5 = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = A31AAB1C23FB691C0025A1A5;
+					};
+					A3E3DC6124AE79770076798E = {
+						CreatedOnToolsVersion = 11.5;
 					};
 				};
 			};
@@ -320,6 +406,7 @@
 				A31AAB1C23FB691C0025A1A5 /* Daily Memories */,
 				A31AAB3223FB69200025A1A5 /* Daily MemoriesTests */,
 				A31AAB3D23FB69210025A1A5 /* Daily MemoriesUITests */,
+				A3E3DC6124AE79770076798E /* Daily Memories App Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -346,6 +433,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3E3DC6024AE79770076798E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3E3DC6D24AE79770076798E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +494,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A3E3DC5E24AE79770076798E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3E3DC6A24AE79770076798E /* NotificationViewController.swift in Sources */,
+				A3E3DC7624AE7CD50076798E /* ContentFetcher.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -412,6 +516,11 @@
 			target = A31AAB1C23FB691C0025A1A5 /* Daily Memories */;
 			targetProxy = A31AAB3F23FB69210025A1A5 /* PBXContainerItemProxy */;
 		};
+		A3E3DC7024AE79770076798E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3E3DC6124AE79770076798E /* Daily Memories App Extension */;
+			targetProxy = A3E3DC6F24AE79770076798E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -421,6 +530,14 @@
 				A31AAB2C23FB69200025A1A5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A3E3DC6B24AE79770076798E /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3E3DC6C24AE79770076798E /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -545,6 +662,7 @@
 		A31AAB4823FB69210025A1A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Daily Memories/Daily Memories.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -553,6 +671,7 @@
 				DEVELOPMENT_TEAM = 36U9EYSXHQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Daily Memories/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,6 +687,7 @@
 		A31AAB4923FB69210025A1A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Daily Memories/Daily Memories.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -576,6 +696,7 @@
 				DEVELOPMENT_TEAM = 36U9EYSXHQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Daily Memories/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -672,6 +793,46 @@
 			};
 			name = Release;
 		};
+		A3E3DC7324AE79770076798E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				INFOPLIST_FILE = "Daily Memories App Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lewandacode.Daily-Memories.Daily-Memories-App-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A3E3DC7424AE79770076798E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				INFOPLIST_FILE = "Daily Memories App Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lewandacode.Daily-Memories.Daily-Memories-App-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -707,6 +868,15 @@
 			buildConfigurations = (
 				A31AAB4E23FB69210025A1A5 /* Debug */,
 				A31AAB4F23FB69210025A1A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3E3DC7224AE79770076798E /* Build configuration list for PBXNativeTarget "Daily Memories App Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3E3DC7324AE79770076798E /* Debug */,
+				A3E3DC7424AE79770076798E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
