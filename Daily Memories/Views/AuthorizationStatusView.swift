@@ -32,8 +32,12 @@ struct AuthorizationStatusView: View {
     var body: some View {
         VStack {
             ImageView(image: .constant(UIImage(systemName: "photo.on.rectangle.fill")!))
-            Text(statusString)
-                .font(.title)
+            if authorizationStatus == .notDetermined {
+                ProgressView(statusString)
+            } else {
+                Text(statusString)
+                    .font(.title)
+            }
         }
     }
 }
