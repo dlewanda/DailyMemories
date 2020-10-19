@@ -10,10 +10,10 @@ import SwiftUI
 import Combine
 
 struct YearListView: View {
-    @ObservedObject var imageFetcher = ContentFetcher.shared
+    @ObservedObject var contentFetcher = ContentFetcher.shared
 
     var yearlyAssetsArray: [YearlyAssets] {
-        imageFetcher.yearlyAssets
+        contentFetcher.yearlyAssets
     }
 
     fileprivate func createNavigationLink(for asset: Asset) -> NavigationLink<ContentView, ContentDetailView> {
