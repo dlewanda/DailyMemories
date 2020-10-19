@@ -17,6 +17,12 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 HStack {
+                    if let loadingProgress = assetModel.loadingProgress,
+                       loadingProgress < 1.0 {
+                        ProgressView("Loading...",
+                                     value: assetModel.loadingProgress,
+                                     total: 1.0)
+                    }
                     Spacer()
                     Image(systemName: assetModel.assetTypeString)
                         .padding()

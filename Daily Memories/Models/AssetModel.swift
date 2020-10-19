@@ -52,7 +52,7 @@ class AssetModel: ObservableObject {
     var phAsset: PHAsset
     var cancellables = Set<AnyCancellable>()
 
-    @Published var loadingProgress: Double = 0.0
+    @Published var loadingProgress: Double?
     @Published var thumbnailImage: UIImage = UIImage(systemName: AssetTypeString.unknown.rawValue)!
 
     public var assetTypeString: String {
