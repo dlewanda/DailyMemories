@@ -32,7 +32,7 @@ struct YearNavigationView: View {
                     YearListView()
                 }
             }
-            .navigationBarTitle(Text("Daily Memories").font(.largeTitle))
+            .navigationBarTitle(Text("Daily Memories"))
             .navigationBarItems(
                 leading: Button(action: {
                     self.contentFetcher.refreshAssets()
