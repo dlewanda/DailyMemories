@@ -83,7 +83,7 @@ struct Notification {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)-> Void) {
-        completionHandler([.alert, .badge, .sound])
+        completionHandler([.banner, .badge, .sound])
     }
 
     private func requestPermissionPromise() -> Future<Bool, Never> {
