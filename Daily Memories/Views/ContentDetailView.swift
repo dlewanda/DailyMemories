@@ -8,30 +8,9 @@
 
 import SwiftUI
 
-enum SheetType {
-    case contentViewer
-    case share
-}
-
 struct ContentDetailView: View {
-    @ObservedObject var assetModel: AssetModel
-    @State var showSheet = false
-    @State var sheet: SheetType = .contentViewer
-
-    private func sheetToShow() -> some View {
-        let assetView: AnyView
-
-        switch sheet {
-        case .contentViewer:
-            assetView = AnyView(ContentViewerView(assetModel: self.assetModel,
-                                                  presentImage: self.$showSheet))
-        case .share:
-            assetView = AnyView(ShareViewController(activityItems: ["Check out what happened today in \(self.assetModel.phAsset.year)",
-                                                                    self.assetModel.thumbnailImage],
-                                                    excludedActivityTypes: [.saveToCameraRoll]))
-        }
-        return assetView
-    }
+    @StateObject var assetModel: AssetModel
+    @State private var showSheet = false
     
     var body: some View {
         VStack {
@@ -39,23 +18,22 @@ struct ContentDetailView: View {
                 Text(assetModel.creationDateString)
                 Spacer()
                 Button(action: {
-                    self.showSheet = true
-                    self.sheet = .share
+                    showSheet = true
                 }) {
                     Image(systemName: "square.and.arrow.up")
                 }
                 Image(systemName: assetModel.assetTypeString)
             }
             .padding()
-            ImageView(image: $assetModel.thumbnailImage)
-                .onTapGesture(count: 2) {
-                    self.showSheet = true
-                    self.sheet = .contentViewer
+            NavigationLink(destination: ContentViewerView(assetModel: self.assetModel)) {
+                ImageView(image: $assetModel.thumbnailImage)
             }
             MapView(coordinate: assetModel.coordinate)
         }
         .sheet(isPresented: $showSheet) {
-            self.sheetToShow()
+            ShareViewController(activityItems: ["Check out what happened today in \(self.assetModel.phAsset.year)",
+                                                self.assetModel.thumbnailImage],
+                                excludedActivityTypes: [.saveToCameraRoll])
         }
     }
 }

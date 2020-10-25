@@ -13,7 +13,6 @@ struct ContentViewerView: View {
     @State var scale: CGFloat = 1.0
     @State var currentPosition = CGSize.zero
     @State var newPosition = CGSize.zero
-    @Binding var presentImage: Bool
 
     private var isZoomed: Bool {
         return scale > 1.0
@@ -87,15 +86,6 @@ struct ContentViewerView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    self.presentImage.toggle()
-                }) {
-                    Text("Dismiss")
-                }
-                Spacer()
-            }
-            .padding()
 
             Spacer()
             
@@ -121,7 +111,6 @@ struct ContentViewerView: View {
 struct ContentViewerView_Previews: PreviewProvider {
     static var previews: some View {
         ContentViewerView(assetModel: ImageModel(asset: ContentFetcher.shared.fetchTestAsset(),
-                                                 imageQuality: .fastFormat),
-                          presentImage: .constant(true))
+                                                 imageQuality: .fastFormat))
     }
 }
