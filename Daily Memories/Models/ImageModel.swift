@@ -21,7 +21,10 @@ class ImageModel: AssetModel {
                 return
             }
 
-            self.loadingProgress = progress
+            DispatchQueue.main.async {
+                self.loadingProgress = progress
+            }
+
         }
         .receive(on: DispatchQueue.main)
         .sink(receiveValue: { [weak self] image in
