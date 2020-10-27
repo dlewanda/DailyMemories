@@ -26,6 +26,14 @@
 		A3222B2E247ACECD009E56F2 /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3222B2D247ACECD009E56F2 /* AssetModel.swift */; };
 		A3222B30247ACF23009E56F2 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3222B2F247ACF23009E56F2 /* VideoModel.swift */; };
 		A32848C72421ACD200959D74 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32848C62421ACD200959D74 /* ImageView.swift */; };
+		A33CB91D25479C4C00F615D0 /* DailyMemoriesSharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; };
+		A33CB92425479C4C00F615D0 /* DailyMemoriesSharedCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33CB92325479C4C00F615D0 /* DailyMemoriesSharedCodeTests.swift */; };
+		A33CB92625479C4C00F615D0 /* DailyMemoriesSharedCode.h in Headers */ = {isa = PBXBuildFile; fileRef = A33CB91625479C4C00F615D0 /* DailyMemoriesSharedCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A33CB92925479C4C00F615D0 /* DailyMemoriesSharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; };
+		A33CB92A25479C4C00F615D0 /* DailyMemoriesSharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A33CB93825479C7100F615D0 /* PHAsset+DailyMemories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33CB93725479C7100F615D0 /* PHAsset+DailyMemories.swift */; };
+		A33CB94825479CBB00F615D0 /* DailyMemoriesSharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; };
+		A33CB94925479CBB00F615D0 /* DailyMemoriesSharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3971F0A2451350700C0AB69 /* YearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3971F092451350700C0AB69 /* YearListView.swift */; };
 		A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C42419046900CCC47A /* ContentDetailView.swift */; };
 		A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C6241904B100CCC47A /* ImageModel.swift */; };
@@ -35,7 +43,7 @@
 		A3E3DC5B24AACE4C0076798E /* LivePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC5A24AACE4C0076798E /* LivePhotoView.swift */; };
 		A3E3DC5D24AC167F0076798E /* LivePhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC5C24AC167F0076798E /* LivePhotoModel.swift */; };
 		A3E3DC6524AE79770076798E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E3DC6424AE79770076798E /* UserNotifications.framework */; };
-		A3E3DC6724AE79770076798E /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E3DC6624AE79770076798E /* UserNotificationsUI.framework */; };
+		A3E3DC6724AE79770076798E /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E3DC6624AE79770076798E /* UserNotificationsUI.framework */; platformFilter = ios; };
 		A3E3DC6A24AE79770076798E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC6924AE79770076798E /* NotificationViewController.swift */; };
 		A3E3DC6D24AE79770076798E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E3DC6B24AE79770076798E /* MainInterface.storyboard */; };
 		A3E3DC7124AE79770076798E /* Daily Memories App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -58,6 +66,34 @@
 			remoteGlobalIDString = A31AAB1C23FB691C0025A1A5;
 			remoteInfo = "Daily Memories";
 		};
+		A33CB91E25479C4C00F615D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A33CB91325479C4C00F615D0;
+			remoteInfo = DailyMemoriesSharedCode;
+		};
+		A33CB92025479C4C00F615D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A31AAB1C23FB691C0025A1A5;
+			remoteInfo = "Daily Memories";
+		};
+		A33CB92725479C4C00F615D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A33CB91325479C4C00F615D0;
+			remoteInfo = DailyMemoriesSharedCode;
+		};
+		A33CB94A25479CBB00F615D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A33CB91325479C4C00F615D0;
+			remoteInfo = DailyMemoriesSharedCode;
+		};
 		A3E3DC6F24AE79770076798E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
@@ -68,6 +104,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A33CB92B25479C4C00F615D0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A33CB92A25479C4C00F615D0 /* DailyMemoriesSharedCode.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33CB94C25479CBB00F615D0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A33CB94925479CBB00F615D0 /* DailyMemoriesSharedCode.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E3DC7524AE79770076798E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,6 +165,14 @@
 		A3222B2D247ACECD009E56F2 /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
 		A3222B2F247ACF23009E56F2 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		A32848C62421ACD200959D74 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DailyMemoriesSharedCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A33CB91625479C4C00F615D0 /* DailyMemoriesSharedCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyMemoriesSharedCode.h; sourceTree = "<group>"; };
+		A33CB91725479C4C00F615D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A33CB91C25479C4C00F615D0 /* DailyMemoriesSharedCodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyMemoriesSharedCodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A33CB92325479C4C00F615D0 /* DailyMemoriesSharedCodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMemoriesSharedCodeTests.swift; sourceTree = "<group>"; };
+		A33CB92525479C4C00F615D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A33CB93725479C7100F615D0 /* PHAsset+DailyMemories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+DailyMemories.swift"; sourceTree = "<group>"; };
+		A33CB95525479E7800F615D0 /* Daily Memories App Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Daily Memories App Extension.entitlements"; sourceTree = "<group>"; };
 		A3971F092451350700C0AB69 /* YearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearListView.swift; sourceTree = "<group>"; };
 		A3BA05C42419046900CCC47A /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		A3BA05C6241904B100CCC47A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
@@ -130,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A33CB92925479C4C00F615D0 /* DailyMemoriesSharedCode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,10 +214,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A33CB91125479C4C00F615D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33CB91925479C4C00F615D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33CB91D25479C4C00F615D0 /* DailyMemoriesSharedCode.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E3DC5F24AE79770076798E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A33CB94825479CBB00F615D0 /* DailyMemoriesSharedCode.framework in Frameworks */,
 				A3E3DC6724AE79770076798E /* UserNotificationsUI.framework in Frameworks */,
 				A3E3DC6524AE79770076798E /* UserNotifications.framework in Frameworks */,
 			);
@@ -175,6 +258,8 @@
 				A31AAB3623FB69200025A1A5 /* Daily MemoriesTests */,
 				A31AAB4123FB69210025A1A5 /* Daily MemoriesUITests */,
 				A3E3DC6824AE79770076798E /* Daily Memories App Extension */,
+				A33CB91525479C4C00F615D0 /* DailyMemoriesSharedCode */,
+				A33CB92225479C4C00F615D0 /* DailyMemoriesSharedCodeTests */,
 				A3E3DC6324AE79770076798E /* Frameworks */,
 				A31AAB1E23FB691C0025A1A5 /* Products */,
 			);
@@ -187,6 +272,8 @@
 				A31AAB3323FB69200025A1A5 /* Daily MemoriesTests.xctest */,
 				A31AAB3E23FB69210025A1A5 /* Daily MemoriesUITests.xctest */,
 				A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */,
+				A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */,
+				A33CB91C25479C4C00F615D0 /* DailyMemoriesSharedCodeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +323,25 @@
 			path = "Daily MemoriesUITests";
 			sourceTree = "<group>";
 		};
+		A33CB91525479C4C00F615D0 /* DailyMemoriesSharedCode */ = {
+			isa = PBXGroup;
+			children = (
+				A33CB91625479C4C00F615D0 /* DailyMemoriesSharedCode.h */,
+				A33CB91725479C4C00F615D0 /* Info.plist */,
+				A33CB93725479C7100F615D0 /* PHAsset+DailyMemories.swift */,
+			);
+			path = DailyMemoriesSharedCode;
+			sourceTree = "<group>";
+		};
+		A33CB92225479C4C00F615D0 /* DailyMemoriesSharedCodeTests */ = {
+			isa = PBXGroup;
+			children = (
+				A33CB92325479C4C00F615D0 /* DailyMemoriesSharedCodeTests.swift */,
+				A33CB92525479C4C00F615D0 /* Info.plist */,
+			);
+			path = DailyMemoriesSharedCodeTests;
+			sourceTree = "<group>";
+		};
 		A3BA05C82419062F00CCC47A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +385,7 @@
 		A3E3DC6824AE79770076798E /* Daily Memories App Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A33CB95525479E7800F615D0 /* Daily Memories App Extension.entitlements */,
 				A3E3DC6924AE79770076798E /* NotificationViewController.swift */,
 				A3E3DC6B24AE79770076798E /* MainInterface.storyboard */,
 				A3E3DC6E24AE79770076798E /* Info.plist */,
@@ -287,6 +394,17 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A33CB90F25479C4C00F615D0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33CB92625479C4C00F615D0 /* DailyMemoriesSharedCode.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		A31AAB1C23FB691C0025A1A5 /* Daily Memories */ = {
@@ -297,11 +415,13 @@
 				A31AAB1A23FB691C0025A1A5 /* Frameworks */,
 				A31AAB1B23FB691C0025A1A5 /* Resources */,
 				A3E3DC7524AE79770076798E /* Embed App Extensions */,
+				A33CB92B25479C4C00F615D0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				A3E3DC7024AE79770076798E /* PBXTargetDependency */,
+				A33CB92825479C4C00F615D0 /* PBXTargetDependency */,
 			);
 			name = "Daily Memories";
 			productName = "Daily Memories";
@@ -344,6 +464,43 @@
 			productReference = A31AAB3E23FB69210025A1A5 /* Daily MemoriesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A33CB93025479C4C00F615D0 /* Build configuration list for PBXNativeTarget "DailyMemoriesSharedCode" */;
+			buildPhases = (
+				A33CB90F25479C4C00F615D0 /* Headers */,
+				A33CB91025479C4C00F615D0 /* Sources */,
+				A33CB91125479C4C00F615D0 /* Frameworks */,
+				A33CB91225479C4C00F615D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyMemoriesSharedCode;
+			productName = DailyMemoriesSharedCode;
+			productReference = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A33CB91B25479C4C00F615D0 /* DailyMemoriesSharedCodeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A33CB93125479C4C00F615D0 /* Build configuration list for PBXNativeTarget "DailyMemoriesSharedCodeTests" */;
+			buildPhases = (
+				A33CB91825479C4C00F615D0 /* Sources */,
+				A33CB91925479C4C00F615D0 /* Frameworks */,
+				A33CB91A25479C4C00F615D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A33CB91F25479C4C00F615D0 /* PBXTargetDependency */,
+				A33CB92125479C4C00F615D0 /* PBXTargetDependency */,
+			);
+			name = DailyMemoriesSharedCodeTests;
+			productName = DailyMemoriesSharedCodeTests;
+			productReference = A33CB91C25479C4C00F615D0 /* DailyMemoriesSharedCodeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A3E3DC6124AE79770076798E /* Daily Memories App Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3E3DC7224AE79770076798E /* Build configuration list for PBXNativeTarget "Daily Memories App Extension" */;
@@ -351,10 +508,12 @@
 				A3E3DC5E24AE79770076798E /* Sources */,
 				A3E3DC5F24AE79770076798E /* Frameworks */,
 				A3E3DC6024AE79770076798E /* Resources */,
+				A33CB94C25479CBB00F615D0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A33CB94B25479CBB00F615D0 /* PBXTargetDependency */,
 			);
 			name = "Daily Memories App Extension";
 			productName = "Daily Memories App Extension";
@@ -367,7 +526,7 @@
 		A31AAB1523FB691C0025A1A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = LewandaCode;
 				TargetAttributes = {
@@ -380,6 +539,14 @@
 					};
 					A31AAB3D23FB69210025A1A5 = {
 						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = A31AAB1C23FB691C0025A1A5;
+					};
+					A33CB91325479C4C00F615D0 = {
+						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1210;
+					};
+					A33CB91B25479C4C00F615D0 = {
+						CreatedOnToolsVersion = 12.1;
 						TestTargetID = A31AAB1C23FB691C0025A1A5;
 					};
 					A3E3DC6124AE79770076798E = {
@@ -404,6 +571,8 @@
 				A31AAB3223FB69200025A1A5 /* Daily MemoriesTests */,
 				A31AAB3D23FB69210025A1A5 /* Daily MemoriesUITests */,
 				A3E3DC6124AE79770076798E /* Daily Memories App Extension */,
+				A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */,
+				A33CB91B25479C4C00F615D0 /* DailyMemoriesSharedCodeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -427,6 +596,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A31AAB3C23FB69210025A1A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33CB91225479C4C00F615D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33CB91A25479C4C00F615D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -490,6 +673,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A33CB91025479C4C00F615D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33CB93825479C7100F615D0 /* PHAsset+DailyMemories.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33CB91825479C4C00F615D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33CB92425479C4C00F615D0 /* DailyMemoriesSharedCodeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E3DC5E24AE79770076798E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,8 +711,29 @@
 			target = A31AAB1C23FB691C0025A1A5 /* Daily Memories */;
 			targetProxy = A31AAB3F23FB69210025A1A5 /* PBXContainerItemProxy */;
 		};
+		A33CB91F25479C4C00F615D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */;
+			targetProxy = A33CB91E25479C4C00F615D0 /* PBXContainerItemProxy */;
+		};
+		A33CB92125479C4C00F615D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A31AAB1C23FB691C0025A1A5 /* Daily Memories */;
+			targetProxy = A33CB92025479C4C00F615D0 /* PBXContainerItemProxy */;
+		};
+		A33CB92825479C4C00F615D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */;
+			targetProxy = A33CB92725479C4C00F615D0 /* PBXContainerItemProxy */;
+		};
+		A33CB94B25479CBB00F615D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */;
+			targetProxy = A33CB94A25479CBB00F615D0 /* PBXContainerItemProxy */;
+		};
 		A3E3DC7024AE79770076798E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = A3E3DC6124AE79770076798E /* Daily Memories App Extension */;
 			targetProxy = A3E3DC6F24AE79770076798E /* PBXContainerItemProxy */;
 		};
@@ -667,7 +887,7 @@
 				DEVELOPMENT_TEAM = 36U9EYSXHQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Daily Memories/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -692,7 +912,7 @@
 				DEVELOPMENT_TEAM = 36U9EYSXHQ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Daily Memories/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -789,13 +1009,117 @@
 			};
 			name = Release;
 		};
+		A33CB92C25479C4C00F615D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DailyMemoriesSharedCode/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lewandacode.DailyMemoriesSharedCode;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A33CB92D25479C4C00F615D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DailyMemoriesSharedCode/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lewandacode.DailyMemoriesSharedCode;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A33CB92E25479C4C00F615D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				INFOPLIST_FILE = DailyMemoriesSharedCodeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lewandacode.DailyMemoriesSharedCodeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daily Memories.app/Daily Memories";
+			};
+			name = Debug;
+		};
+		A33CB92F25479C4C00F615D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				INFOPLIST_FILE = DailyMemoriesSharedCodeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lewandacode.DailyMemoriesSharedCodeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daily Memories.app/Daily Memories";
+			};
+			name = Release;
+		};
 		A3E3DC7324AE79770076798E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Daily Memories App Extension/Daily Memories App Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36U9EYSXHQ;
 				INFOPLIST_FILE = "Daily Memories App Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -804,6 +1128,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lewandacode.Daily-Memories.Daily-Memories-App-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -812,10 +1137,11 @@
 		A3E3DC7424AE79770076798E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Daily Memories App Extension/Daily Memories App Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36U9EYSXHQ;
 				INFOPLIST_FILE = "Daily Memories App Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -824,6 +1150,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lewandacode.Daily-Memories.Daily-Memories-App-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -864,6 +1191,24 @@
 			buildConfigurations = (
 				A31AAB4E23FB69210025A1A5 /* Debug */,
 				A31AAB4F23FB69210025A1A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A33CB93025479C4C00F615D0 /* Build configuration list for PBXNativeTarget "DailyMemoriesSharedCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A33CB92C25479C4C00F615D0 /* Debug */,
+				A33CB92D25479C4C00F615D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A33CB93125479C4C00F615D0 /* Build configuration list for PBXNativeTarget "DailyMemoriesSharedCodeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A33CB92E25479C4C00F615D0 /* Debug */,
+				A33CB92F25479C4C00F615D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

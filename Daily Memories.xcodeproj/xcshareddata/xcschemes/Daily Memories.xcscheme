@@ -48,6 +48,16 @@
                ReferencedContainer = "container:Daily Memories.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A33CB91B25479C4C00F615D0"
+               BuildableName = "DailyMemoriesSharedCodeTests.xctest"
+               BlueprintName = "DailyMemoriesSharedCodeTests"
+               ReferencedContainer = "container:Daily Memories.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DailyMemoriesSharedCode
 
 struct ContentDetailView: View {
     @StateObject var assetModel: AssetModel

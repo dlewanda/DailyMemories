@@ -11,31 +11,8 @@ import Photos
 import MapKit
 import UIKit
 
-extension PHAsset {
-    var creationDateString: String {
-        guard let creationDate = self.creationDate else {
-            return "Unknown"
-        }
+import DailyMemoriesSharedCode
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .long
-
-        return dateFormatter.string(from: creationDate)
-    }
-
-    var year: Int {
-        guard let creationDate = self.creationDate else {
-            return 0
-        }
-
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone.current
-
-        let components = calendar.dateComponents([.year], from: creationDate)
-        return components.year ?? 0
-    }
-}
 
 enum AssetTypeString: String {
     case unknown = "questionmark.square"

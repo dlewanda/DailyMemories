@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 import Combine
+import DailyMemoriesSharedCode
 
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
 
@@ -27,7 +28,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
 
         let assets = contentFetcher.fetchAssets(for: Date())
         guard let firstAsset = assets.firstObject else {
-            self.label?.text = "No memmories for today"
+            self.label?.text = "No memories for today"
             self.imageView?.isHidden = true
             return
         }
@@ -35,13 +36,13 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         self.label?.text = notification.request.content.body
         self.loadCancellable = contentFetcher.loadImage(asset: firstAsset,
                                                         quality: .opportunistic) { (progress, error, stop, info) in
-                                                            DispatchQueue.main.async {
-                                                                //                                                self.loadingProgress = progress
-                                                            }
+            DispatchQueue.main.async {
+//                                                                self.loadingProgress = progress
+            }
         }
         .receive(on: DispatchQueue.main)
         .sink(receiveValue: { [weak self] image in
-            self?.imageView?.image = UIImage(systemName: "photo")//image
+            self?.imageView?.image = image
         })
     }
 
