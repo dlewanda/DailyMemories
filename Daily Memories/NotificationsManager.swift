@@ -156,6 +156,5 @@ struct Notification {
 
     public func cancelNotification() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        //        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification.id])
     }
 }
