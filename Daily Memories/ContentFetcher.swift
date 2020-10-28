@@ -119,7 +119,7 @@ class ContentFetcher: ObservableObject {
 
     /// fetches assets for the day specified going back over all available years
     private func fetchDailyAssets(for date: Date = Date()) -> [YearlyAssets] {
-        
+
         var assets = [YearlyAssets]()
 
         guard let oldestAsset = fetchOldestAsset(), let oldestAssetDate = oldestAsset.creationDate else {
@@ -158,6 +158,27 @@ class ContentFetcher: ObservableObject {
 
     public func refreshAssets() {
         yearlyAssets = fetchDailyAssets()
+    }
+
+    public func mostRecentAssetForThis(date: Date) -> PHFetchResult<PHAsset> {
+        var assets = fetchAssets(for: date)
+        var years = 1
+
+        guard let oldestAsset = fetchOldestAsset(),
+              let oldestAssetDate = oldestAsset.creationDate else {
+            return assets
+        }
+
+        while assets.count == 0 {
+            guard let nextDate = Calendar.current.date(byAdding: .year, value: -years, to: date),
+                  nextDate > oldestAssetDate else {
+                break
+            }
+
+            assets = fetchAssets(for: nextDate)
+            years += 1
+        }
+        return assets
     }
 }
 

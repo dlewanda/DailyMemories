@@ -37,7 +37,7 @@ struct Notification {
     @Published var notificationTime: Date = Date.distantFuture {
         didSet {
             if schedulingNotificationEnabled {
-                scheduleNotification(at: notificationTime)
+                setupNotification()
             } else {
                 // should not be able to get here
             }
@@ -68,8 +68,8 @@ struct Notification {
         currentUserNotificationsCenter.getPendingNotificationRequests { requests in
             for request in requests {
                 guard let calendarTrigger = request.trigger as? UNCalendarNotificationTrigger,
-                    let triggerTime = Calendar.current.date(from: calendarTrigger.dateComponents) else {
-                        break
+                      let triggerTime = Calendar.current.date(from: calendarTrigger.dateComponents) else {
+                    break
                 }
 
                 DispatchQueue.main.async {
@@ -99,7 +99,7 @@ struct Notification {
                     } else {
                         promise(.success(false))
                     }
-            }
+                }
         }
 
         return authorize
@@ -120,10 +120,12 @@ struct Notification {
         if notificationTime != time {
             notificationTime = time
         }
+    }
 
+    private func setupNotification() {
         // clear any old notifications
         cancelNotification()
-
+        
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             guard let strongSelf = self else { return }
             switch settings.authorizationStatus {
@@ -134,45 +136,16 @@ struct Notification {
                 content.title = strongSelf.notification.title
                 content.body = strongSelf.notification.body
                 content.categoryIdentifier = strongSelf.notificationCategoryIdentifier
-                let assets = ContentFetcher.shared.fetchAssets(for: time)
-                if let asset = assets.firstObject {
-                    //if there's an asset for the notification, attach the associated thumbnail
-                    self?.imageCancellable = ContentFetcher.shared.loadImage(asset: asset,
-                                                                             quality: .opportunistic) { (progress, error, stop, info) in
-                                                                                DispatchQueue.main.async {
-                                                                                    //                                                self.loadingProgress = progress
-                                                                                }
-                    }
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveValue: { [weak self] image in
-                        let url = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
-                        let fileURL = url.appendingPathComponent("someImageName",
-                                                                 isDirectory: false).appendingPathExtension("jpeg")
-                        do {
-                            try image.jpegData(compressionQuality: 1.0)?.write(to: fileURL)
 
-                            if let notificationId = self?.notification.id,
-                                let attachment = try? UNNotificationAttachment(identifier: notificationId,
-                                                                         url: url,
-                                                                         options: nil) {
-                                // where myImage is any UIImage
-                                content.attachments = [attachment]
-                            }
-
-                            let timeComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
-                            let trigger = UNCalendarNotificationTrigger(dateMatching: timeComponents, repeats: true)
-                            let request = UNNotificationRequest(identifier: strongSelf.notification.id,
-                                                                content: content,
-                                                                trigger: trigger)
-                            UNUserNotificationCenter.current().add(request) { [weak self] error in
-                                guard error == nil else { return }
-                                print("Scheduling notification with id: \(self?.notification.id ?? "Unknown Notification ID?!?")")
-                            }
-
-                        } catch {
-                            print("Could not attach image: ", error)
-                        }
-                    })
+                let timeComponents = Calendar.current.dateComponents([.hour, .minute],
+                                                                     from: strongSelf.notificationTime)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: timeComponents, repeats: true)
+                let request = UNNotificationRequest(identifier: strongSelf.notification.id,
+                                                    content: content,
+                                                    trigger: trigger)
+                UNUserNotificationCenter.current().add(request) { [weak self] error in
+                    guard error == nil else { return }
+                    print("Scheduling notification with id: \(self?.notification.id ?? "Unknown Notification ID?!?")")
                 }
 
             default:

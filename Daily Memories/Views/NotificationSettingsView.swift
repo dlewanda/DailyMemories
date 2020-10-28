@@ -39,7 +39,13 @@ struct NotificationSettingsView: View {
                     }
                     #if DEBUG
                     Button(action: {
-                        self.notificationsManager.scheduleNotification(at: Date().advanced(by: 15))
+                        let now = Date()
+                        let components = Calendar.current.dateComponents([.second],
+                                                                         from: now)
+                        let seconds = components.second ?? 0
+                        let secondsToAdvance = 60 - seconds
+                        let scheduledTime = now.advanced(by: TimeInterval(secondsToAdvance))
+                        self.notificationsManager.scheduleNotification(at: scheduledTime)
                     }) {
                         Text("Test notification")
                     }

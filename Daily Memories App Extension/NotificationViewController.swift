@@ -24,16 +24,17 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     }
     
     func didReceive(_ notification: UNNotification) {
+
         let contentFetcher = ContentFetcher.shared
 
-        let assets = contentFetcher.fetchAssets(for: Date())
+        let assets = contentFetcher.mostRecentAssetForThis(date: Date())
         guard let firstAsset = assets.firstObject else {
             self.label?.text = "No memories for today"
             self.imageView?.isHidden = true
             return
         }
 
-        self.label?.text = notification.request.content.body
+        self.label?.text = "Trying to load asset from \(firstAsset.creationDateString)"
         self.loadCancellable = contentFetcher.loadImage(asset: firstAsset,
                                                         quality: .opportunistic) { (progress, error, stop, info) in
             DispatchQueue.main.async {
@@ -43,6 +44,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         .receive(on: DispatchQueue.main)
         .sink(receiveValue: { [weak self] image in
             self?.imageView?.image = image
+            self?.label?.text = "Check out what happened in \(firstAsset.year)"
         })
     }
 
