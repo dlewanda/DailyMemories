@@ -11,8 +11,9 @@ import Combine
 import UIKit
 import AVKit
 
-enum AssetError: Error {
+public enum AssetError: Error {
     case videoIniCloud
+    case noImageForToday
 }
 
 public struct Asset: Identifiable {
@@ -42,11 +43,10 @@ public class ContentFetcher: ObservableObject {
 
     @Published public var authorizationStatus = PHAuthorizationStatus.notDetermined
     @Published public var yearlyAssets: [YearlyAssets] = [YearlyAssets]()
-    private var requestCancellable: Cancellable?
+    private var cancellables = Set<AnyCancellable>()
 
     public func requestPhotoAccess() {
-        let requestFuture = requestPhotosAccessPromise()
-        requestCancellable = requestFuture
+        requestPhotosAccessPromise()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] authorizationStatus in
                 self?.authorizationStatus = authorizationStatus
@@ -54,6 +54,7 @@ public class ContentFetcher: ObservableObject {
                     strongSelf.yearlyAssets = strongSelf.fetchDailyAssets(for: Date())
                 }
             })
+            .store(in: &cancellables)
     }
 
     private func fetchOldestAsset() -> PHAsset? {
@@ -217,6 +218,35 @@ extension ContentFetcher {
             }
         }
         return imagePromise
+    }
+
+    public func getImageFor(date: Date) -> AnyPublisher<(UIImage, Int), Error> {
+        let assets = mostRecentAssetForThis(date: date)
+        guard let firstAsset = assets.firstObject else {
+            return Future<(UIImage, Int), Error> { promise in
+                promise(.failure(AssetError.noImageForToday))
+            }
+            .eraseToAnyPublisher()
+        }
+
+        return loadImage(asset: firstAsset, quality: .opportunistic)
+            .flatMap { image in
+                return Future<(UIImage, Int), Error> { promise in
+                    promise(.success((image, firstAsset.year)))
+                }.eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+    }
+
+    public func getImageFor(date: Date, completion: @escaping (UIImage?, Int) -> Void) {
+        getImageFor(date: date)
+            .receive(on: DispatchQueue.main)
+            .sink { error in
+                completion(nil, 0)
+            } receiveValue: { (image, year) in
+                completion(image, year)
+            }
+            .store(in: &cancellables)
     }
 }
 
