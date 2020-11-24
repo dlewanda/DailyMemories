@@ -12,60 +12,64 @@ import Combine
 import DailyMemoriesSharedCode
 
 struct Provider: TimelineProvider {
+
+    private var cancellables = Set<AnyCancellable>()
+    var fetchedEntry: MemoryEntry?
     private var loadCancellable: Cancellable?
 
     func placeholder(in context: Context) -> MemoryEntry {
-        MemoryEntry(date: Date(), image: MemoryEntry.defaultImage)
+        MemoryEntry.placeholder
     }
 
     func getSnapshot(in context: Context, completion: @escaping (MemoryEntry) -> ()) {
-        let entry = getLatestImage()
-        completion(entry)
+        if let entry = fetchedEntry {
+            completion(entry)
+        } else {
+            completion(MemoryEntry.placeholder)
+        }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [MemoryEntry] = []
+        let date = Date()
+        ContentFetcher.shared.getImageFor(date: date) { uiImage, year in
+            // TODO: Replace force cast?
+            let uiImage = uiImage ?? UIImage(systemName: "nosign")!
+            let image = Image(uiImage: uiImage)
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = MemoryEntry(date: entryDate, image: MemoryEntry.defaultImage)
-            entries.append(entry)
+            // Create a timeline entry for "now."
+            let entry = MemoryEntry(
+                date: date,
+                year: year,
+                image: image
+            )
+
+            // Create a date that's 1 day in the future.
+            let nextUpdateDate = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+
+            // Create the timeline with the entry and a reload policy with the date
+            // for the next update.
+            let timeline = Timeline(
+                entries:[entry],
+                policy: .after(nextUpdateDate)
+            )
+
+            // Call the completion to pass the timeline to WidgetKit.
+            completion(timeline)
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
 
-    func getLatestImage() -> MemoryEntry {
-//
-        let contentFetcher = ContentFetcher.shared
-//
-//        let assets = contentFetcher.mostRecentAssetForThis(date: Date())
-//        guard let firstAsset = assets.firstObject else {
-//            return MemoryEntry(date: Date(), image: Image(systemName: "nosign"))
-//        }
-//
-//        loadCancellable = contentFetcher.loadImage(asset: firstAsset,
-//                                                   quality: .opportunistic) { (progress, error, stop, info) in
-//            DispatchQueue.main.async {
-////                                                                self.loadingProgress = progress
-//            }
-//        }
-//        .receive(on: DispatchQueue.main)
-//        .sink(receiveValue: { image in
-//            return MemoryEntry(date: Date(), image: Image(uiImage: image))
-//        })
-        return MemoryEntry(date: Date(), image: MemoryEntry.defaultImage)
-    }
+}
 
 struct MemoryEntry: TimelineEntry {
     let date: Date
+    let year: Int
     let image: Image
 
-    // TODO: Replace force unwrap?
     static let defaultImage = Image(systemName: "photo")
+
+    static var placeholder: MemoryEntry {
+        MemoryEntry(date: Date(), year: 2020, image: MemoryEntry.defaultImage)
+    }
 }
 
 struct DailyMemoriesWidgetEntryView : View {
@@ -76,7 +80,7 @@ struct DailyMemoriesWidgetEntryView : View {
             entry.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            Text(entry.date, style: .date)
+            Text("Today in \(String(entry.year))")
         }.padding()
     }
 }
@@ -97,8 +101,9 @@ struct DailyMemoriesWidget: Widget {
 struct DailyMemoriesWidget_Previews: PreviewProvider {
     static var previews: some View {
         DailyMemoriesWidgetEntryView(entry: MemoryEntry(date: Date(),
+                                                        year: 2020,
                                                         image: MemoryEntry.defaultImage))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
-    }
 }
+
