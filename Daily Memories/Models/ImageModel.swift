@@ -8,6 +8,7 @@
 
 import Photos
 import UIKit
+import DailyMemoriesSharedCode
 
 class ImageModel: AssetModel {
 

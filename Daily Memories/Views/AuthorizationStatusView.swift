@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Photos
+import DailyMemoriesSharedCode
 
 struct AuthorizationStatusView: View {
     @State var authorizationStatus: PHAuthorizationStatus

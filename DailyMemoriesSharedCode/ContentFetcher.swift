@@ -15,13 +15,13 @@ enum AssetError: Error {
     case videoIniCloud
 }
 
-struct Asset: Identifiable {
-    var id = UUID()
-    let phAsset: PHAsset
+public struct Asset: Identifiable {
+    public let id = UUID()
+    public let phAsset: PHAsset
 }
 
-struct YearlyAssets: Identifiable {
-    var id = UUID()
+public struct YearlyAssets: Identifiable {
+    public var id = UUID()
 
     static var sectionHeaderFormat: NumberFormatter {
         let formatter = NumberFormatter()
@@ -30,17 +30,17 @@ struct YearlyAssets: Identifiable {
     }
 
     let year: Int
-    var assets: [Asset] = [Asset]()
+    public var assets: [Asset] = [Asset]()
 
-    var yearString: String {
+    public var yearString: String {
         return Self.sectionHeaderFormat.string(from: NSNumber(value: year)) ?? "-----"
     }
 }
 
-class ContentFetcher: ObservableObject {
+public class ContentFetcher: ObservableObject {
     public static let shared = ContentFetcher()
 
-    @Published var authorizationStatus = PHAuthorizationStatus.notDetermined
+    @Published public var authorizationStatus = PHAuthorizationStatus.notDetermined
     @Published public var yearlyAssets: [YearlyAssets] = [YearlyAssets]()
     private var requestCancellable: Cancellable?
 

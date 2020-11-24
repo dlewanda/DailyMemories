@@ -18,7 +18,6 @@
 		A31AAB2D23FB69200025A1A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31AAB2B23FB69200025A1A5 /* LaunchScreen.storyboard */; };
 		A31AAB3823FB69200025A1A5 /* Daily_MemoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB3723FB69200025A1A5 /* Daily_MemoriesTests.swift */; };
 		A31AAB4323FB69210025A1A5 /* Daily_MemoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB4223FB69210025A1A5 /* Daily_MemoriesUITests.swift */; };
-		A31AAB5123FB81820025A1A5 /* ContentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */; };
 		A31AAB532401D1290025A1A5 /* YearNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB522401D1290025A1A5 /* YearNavigationView.swift */; };
 		A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB54240DF84C0025A1A5 /* AuthorizationStatusView.swift */; };
 		A31AAB57240DFB250025A1A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB56240DFB250025A1A5 /* MainView.swift */; };
@@ -35,6 +34,14 @@
 		A33CB94825479CBB00F615D0 /* DailyMemoriesSharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; };
 		A33CB94925479CBB00F615D0 /* DailyMemoriesSharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3971F0A2451350700C0AB69 /* YearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3971F092451350700C0AB69 /* YearListView.swift */; };
+		A39CA16A256C9484006694F3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39CA169256C9484006694F3 /* WidgetKit.framework */; };
+		A39CA16C256C9484006694F3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39CA16B256C9484006694F3 /* SwiftUI.framework */; };
+		A39CA16F256C9484006694F3 /* DailyMemoriesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CA16E256C9484006694F3 /* DailyMemoriesWidget.swift */; };
+		A39CA171256C9487006694F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A39CA170256C9487006694F3 /* Assets.xcassets */; };
+		A39CA175256C9487006694F3 /* DailyMemoriesWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A39CA168256C9484006694F3 /* DailyMemoriesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A39CA184256D40B4006694F3 /* ContentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */; };
+		A39CA198256D4113006694F3 /* DailyMemoriesSharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; };
+		A39CA199256D4113006694F3 /* DailyMemoriesSharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C42419046900CCC47A /* ContentDetailView.swift */; };
 		A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C6241904B100CCC47A /* ImageModel.swift */; };
 		A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CA2419CA4100CCC47A /* MapView.swift */; };
@@ -47,7 +54,6 @@
 		A3E3DC6A24AE79770076798E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3DC6924AE79770076798E /* NotificationViewController.swift */; };
 		A3E3DC6D24AE79770076798E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E3DC6B24AE79770076798E /* MainInterface.storyboard */; };
 		A3E3DC7124AE79770076798E /* Daily Memories App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A3E3DC7624AE7CD50076798E /* ContentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */; };
 		A3E9CA0024871691003C12D9 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9C9FF24871691003C12D9 /* VideoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +100,20 @@
 			remoteGlobalIDString = A33CB91325479C4C00F615D0;
 			remoteInfo = DailyMemoriesSharedCode;
 		};
+		A39CA173256C9487006694F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A39CA167256C9484006694F3;
+			remoteInfo = DailyMemoriesWidgetExtension;
+		};
+		A39CA18C256D410B006694F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A33CB91325479C4C00F615D0;
+			remoteInfo = DailyMemoriesSharedCode;
+		};
 		A3E3DC6F24AE79770076798E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A31AAB1523FB691C0025A1A5 /* Project object */;
@@ -126,6 +146,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A39CA19A256D4113006694F3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A39CA199256D4113006694F3 /* DailyMemoriesSharedCode.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E3DC7524AE79770076798E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,6 +164,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				A3E3DC7124AE79770076798E /* Daily Memories App Extension.appex in Embed App Extensions */,
+				A39CA175256C9487006694F3 /* DailyMemoriesWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +206,13 @@
 		A33CB93725479C7100F615D0 /* PHAsset+DailyMemories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+DailyMemories.swift"; sourceTree = "<group>"; };
 		A33CB95525479E7800F615D0 /* Daily Memories App Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Daily Memories App Extension.entitlements"; sourceTree = "<group>"; };
 		A3971F092451350700C0AB69 /* YearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearListView.swift; sourceTree = "<group>"; };
+		A39CA168256C9484006694F3 /* DailyMemoriesWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyMemoriesWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A39CA169256C9484006694F3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A39CA16B256C9484006694F3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A39CA16E256C9484006694F3 /* DailyMemoriesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMemoriesWidget.swift; sourceTree = "<group>"; };
+		A39CA170256C9487006694F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A39CA172256C9487006694F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A39CA176256C9487006694F3 /* DailyMemoriesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyMemoriesWidgetExtension.entitlements; sourceTree = "<group>"; };
 		A3BA05C42419046900CCC47A /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		A3BA05C6241904B100CCC47A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		A3BA05CA2419CA4100CCC47A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -229,6 +268,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A39CA165256C9484006694F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A39CA198256D4113006694F3 /* DailyMemoriesSharedCode.framework in Frameworks */,
+				A39CA16C256C9484006694F3 /* SwiftUI.framework in Frameworks */,
+				A39CA16A256C9484006694F3 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E3DC5F24AE79770076798E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,12 +303,14 @@
 		A31AAB1423FB691C0025A1A5 = {
 			isa = PBXGroup;
 			children = (
+				A39CA176256C9487006694F3 /* DailyMemoriesWidgetExtension.entitlements */,
 				A31AAB1F23FB691C0025A1A5 /* Daily Memories */,
 				A31AAB3623FB69200025A1A5 /* Daily MemoriesTests */,
 				A31AAB4123FB69210025A1A5 /* Daily MemoriesUITests */,
 				A3E3DC6824AE79770076798E /* Daily Memories App Extension */,
 				A33CB91525479C4C00F615D0 /* DailyMemoriesSharedCode */,
 				A33CB92225479C4C00F615D0 /* DailyMemoriesSharedCodeTests */,
+				A39CA16D256C9484006694F3 /* DailyMemoriesWidget */,
 				A3E3DC6324AE79770076798E /* Frameworks */,
 				A31AAB1E23FB691C0025A1A5 /* Products */,
 			);
@@ -274,6 +325,7 @@
 				A3E3DC6224AE79770076798E /* Daily Memories App Extension.appex */,
 				A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */,
 				A33CB91C25479C4C00F615D0 /* DailyMemoriesSharedCodeTests.xctest */,
+				A39CA168256C9484006694F3 /* DailyMemoriesWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,7 +335,6 @@
 			children = (
 				A31AAB2023FB691C0025A1A5 /* AppDelegate.swift */,
 				A31AAB2623FB69200025A1A5 /* Assets.xcassets */,
-				A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */,
 				A3BA05CE241DABC000CCC47A /* Daily Memories.entitlements */,
 				A31AAB2E23FB69200025A1A5 /* Info.plist */,
 				A31AAB2B23FB69200025A1A5 /* LaunchScreen.storyboard */,
@@ -326,6 +377,7 @@
 		A33CB91525479C4C00F615D0 /* DailyMemoriesSharedCode */ = {
 			isa = PBXGroup;
 			children = (
+				A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */,
 				A33CB91625479C4C00F615D0 /* DailyMemoriesSharedCode.h */,
 				A33CB91725479C4C00F615D0 /* Info.plist */,
 				A33CB93725479C7100F615D0 /* PHAsset+DailyMemories.swift */,
@@ -340,6 +392,16 @@
 				A33CB92525479C4C00F615D0 /* Info.plist */,
 			);
 			path = DailyMemoriesSharedCodeTests;
+			sourceTree = "<group>";
+		};
+		A39CA16D256C9484006694F3 /* DailyMemoriesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				A39CA16E256C9484006694F3 /* DailyMemoriesWidget.swift */,
+				A39CA170256C9487006694F3 /* Assets.xcassets */,
+				A39CA172256C9487006694F3 /* Info.plist */,
+			);
+			path = DailyMemoriesWidget;
 			sourceTree = "<group>";
 		};
 		A3BA05C82419062F00CCC47A /* Views */ = {
@@ -378,6 +440,8 @@
 			children = (
 				A3E3DC6424AE79770076798E /* UserNotifications.framework */,
 				A3E3DC6624AE79770076798E /* UserNotificationsUI.framework */,
+				A39CA169256C9484006694F3 /* WidgetKit.framework */,
+				A39CA16B256C9484006694F3 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,6 +486,7 @@
 			dependencies = (
 				A3E3DC7024AE79770076798E /* PBXTargetDependency */,
 				A33CB92825479C4C00F615D0 /* PBXTargetDependency */,
+				A39CA174256C9487006694F3 /* PBXTargetDependency */,
 			);
 			name = "Daily Memories";
 			productName = "Daily Memories";
@@ -501,6 +566,25 @@
 			productReference = A33CB91C25479C4C00F615D0 /* DailyMemoriesSharedCodeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A39CA167256C9484006694F3 /* DailyMemoriesWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A39CA179256C9487006694F3 /* Build configuration list for PBXNativeTarget "DailyMemoriesWidgetExtension" */;
+			buildPhases = (
+				A39CA164256C9484006694F3 /* Sources */,
+				A39CA165256C9484006694F3 /* Frameworks */,
+				A39CA166256C9484006694F3 /* Resources */,
+				A39CA19A256D4113006694F3 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A39CA18D256D410B006694F3 /* PBXTargetDependency */,
+			);
+			name = DailyMemoriesWidgetExtension;
+			productName = DailyMemoriesWidgetExtension;
+			productReference = A39CA168256C9484006694F3 /* DailyMemoriesWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A3E3DC6124AE79770076798E /* Daily Memories App Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3E3DC7224AE79770076798E /* Build configuration list for PBXNativeTarget "Daily Memories App Extension" */;
@@ -526,7 +610,7 @@
 		A31AAB1523FB691C0025A1A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1210;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = LewandaCode;
 				TargetAttributes = {
@@ -548,6 +632,9 @@
 					A33CB91B25479C4C00F615D0 = {
 						CreatedOnToolsVersion = 12.1;
 						TestTargetID = A31AAB1C23FB691C0025A1A5;
+					};
+					A39CA167256C9484006694F3 = {
+						CreatedOnToolsVersion = 12.2;
 					};
 					A3E3DC6124AE79770076798E = {
 						CreatedOnToolsVersion = 11.5;
@@ -573,6 +660,7 @@
 				A3E3DC6124AE79770076798E /* Daily Memories App Extension */,
 				A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */,
 				A33CB91B25479C4C00F615D0 /* DailyMemoriesSharedCodeTests */,
+				A39CA167256C9484006694F3 /* DailyMemoriesWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -616,6 +704,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A39CA166256C9484006694F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A39CA171256C9487006694F3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E3DC6024AE79770076798E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -648,7 +744,6 @@
 				A31AAB55240DF84C0025A1A5 /* AuthorizationStatusView.swift in Sources */,
 				A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */,
 				A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */,
-				A31AAB5123FB81820025A1A5 /* ContentFetcher.swift in Sources */,
 				A31AAB532401D1290025A1A5 /* YearNavigationView.swift in Sources */,
 				A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */,
 				A3069CD7243027E40027702C /* NotificationsManager.swift in Sources */,
@@ -678,6 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33CB93825479C7100F615D0 /* PHAsset+DailyMemories.swift in Sources */,
+				A39CA184256D40B4006694F3 /* ContentFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,12 +785,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A39CA164256C9484006694F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A39CA16F256C9484006694F3 /* DailyMemoriesWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A3E3DC5E24AE79770076798E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A3E3DC6A24AE79770076798E /* NotificationViewController.swift in Sources */,
-				A3E3DC7624AE7CD50076798E /* ContentFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +833,16 @@
 			isa = PBXTargetDependency;
 			target = A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */;
 			targetProxy = A33CB94A25479CBB00F615D0 /* PBXContainerItemProxy */;
+		};
+		A39CA174256C9487006694F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A39CA167256C9484006694F3 /* DailyMemoriesWidgetExtension */;
+			targetProxy = A39CA173256C9487006694F3 /* PBXContainerItemProxy */;
+		};
+		A39CA18D256D410B006694F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A33CB91325479C4C00F615D0 /* DailyMemoriesSharedCode */;
+			targetProxy = A39CA18C256D410B006694F3 /* PBXContainerItemProxy */;
 		};
 		A3E3DC7024AE79770076798E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1112,6 +1225,54 @@
 			};
 			name = Release;
 		};
+		A39CA177256C9487006694F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DailyMemoriesWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				INFOPLIST_FILE = DailyMemoriesWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lewandacode.Daily-Memories.DailyMemoriesWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A39CA178256C9487006694F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DailyMemoriesWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36U9EYSXHQ;
+				INFOPLIST_FILE = DailyMemoriesWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lewandacode.Daily-Memories.DailyMemoriesWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A3E3DC7324AE79770076798E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1209,6 +1370,15 @@
 			buildConfigurations = (
 				A33CB92E25479C4C00F615D0 /* Debug */,
 				A33CB92F25479C4C00F615D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A39CA179256C9487006694F3 /* Build configuration list for PBXNativeTarget "DailyMemoriesWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A39CA177256C9487006694F3 /* Debug */,
+				A39CA178256C9487006694F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

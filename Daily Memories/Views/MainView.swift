@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Photos
+import DailyMemoriesSharedCode
 
 struct MainView: View {
     @ObservedObject var imageFetcher = ContentFetcher.shared

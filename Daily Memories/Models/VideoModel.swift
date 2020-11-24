@@ -9,6 +9,7 @@
 import Combine
 import Photos
 import AVKit
+import DailyMemoriesSharedCode
 
 class VideoModel: AssetModel {
     @Published var urlAsset: AVURLAsset?

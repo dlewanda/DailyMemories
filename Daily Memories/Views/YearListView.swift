@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import DailyMemoriesSharedCode
 
 struct YearListView: View {
     @ObservedObject var contentFetcher = ContentFetcher.shared

@@ -8,6 +8,7 @@
 
 import Photos.PHAsset
 import SwiftUI
+import DailyMemoriesSharedCode
 
 struct YearNavigationView: View {
     @ObservedObject var contentFetcher = ContentFetcher.shared

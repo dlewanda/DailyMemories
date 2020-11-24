@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DailyMemoriesSharedCode
 
 struct ContentView: View {
     @ObservedObject var assetModel: AssetModel

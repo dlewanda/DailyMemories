@@ -8,6 +8,7 @@
 
 import Combine
 import PhotosUI
+import DailyMemoriesSharedCode
 
 class LivePhotoModel: AssetModel {
     @Published var livePhoto: PHLivePhoto?
