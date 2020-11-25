@@ -42,6 +42,7 @@
 		A39CA184256D40B4006694F3 /* ContentFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AAB5023FB81820025A1A5 /* ContentFetcher.swift */; };
 		A39CA198256D4113006694F3 /* DailyMemoriesSharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; };
 		A39CA199256D4113006694F3 /* DailyMemoriesSharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A33CB91425479C4C00F615D0 /* DailyMemoriesSharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A39CA1AE256DEF64006694F3 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39CA1AD256DEF64006694F3 /* Log.swift */; };
 		A3BA05C52419046900CCC47A /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C42419046900CCC47A /* ContentDetailView.swift */; };
 		A3BA05C7241904B100CCC47A /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05C6241904B100CCC47A /* ImageModel.swift */; };
 		A3BA05CB2419CA4100CCC47A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA05CA2419CA4100CCC47A /* MapView.swift */; };
@@ -213,6 +214,7 @@
 		A39CA170256C9487006694F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A39CA172256C9487006694F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A39CA176256C9487006694F3 /* DailyMemoriesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyMemoriesWidgetExtension.entitlements; sourceTree = "<group>"; };
+		A39CA1AD256DEF64006694F3 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A3BA05C42419046900CCC47A /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		A3BA05C6241904B100CCC47A /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		A3BA05CA2419CA4100CCC47A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				A33CB91625479C4C00F615D0 /* DailyMemoriesSharedCode.h */,
 				A33CB91725479C4C00F615D0 /* Info.plist */,
 				A33CB93725479C7100F615D0 /* PHAsset+DailyMemories.swift */,
+				A39CA1AD256DEF64006694F3 /* Log.swift */,
 			);
 			path = DailyMemoriesSharedCode;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 			files = (
 				A33CB93825479C7100F615D0 /* PHAsset+DailyMemories.swift in Sources */,
 				A39CA184256D40B4006694F3 /* ContentFetcher.swift in Sources */,
+				A39CA1AE256DEF64006694F3 /* Log.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
