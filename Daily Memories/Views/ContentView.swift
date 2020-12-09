@@ -23,6 +23,8 @@ struct ContentView: View {
                         ProgressView("Loading...",
                                      value: assetModel.loadingProgress,
                                      total: 1.0)
+                            .foregroundColor(Color.white)
+                            .padding()
                     }
                     Spacer()
                     Image(systemName: assetModel.assetTypeString)
