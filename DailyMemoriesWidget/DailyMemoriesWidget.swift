@@ -43,8 +43,9 @@ struct Provider: TimelineProvider {
                 image: image
             )
 
-            // Create a date that's 1 day in the future.
-            let nextUpdateDate = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+            // Create a date that starts at the start of tomorrow
+            let calendar = Calendar.current
+            let nextUpdateDate = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: date)!)
 
             // Create the timeline with the entry and a reload policy with the date
             // for the next update.
@@ -76,12 +77,16 @@ struct DailyMemoriesWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
+        ZStack {
             entry.image
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-            Text("Today in \(String(entry.year))")
-        }.padding()
+                .aspectRatio(contentMode: .fill)
+            VStack {
+                Spacer()
+                Text("Today in \(String(entry.year))")
+                    .foregroundColor(Color.white)
+            }.padding(5)
+        }
     }
 }
 
