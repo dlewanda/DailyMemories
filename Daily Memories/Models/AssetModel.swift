@@ -6,6 +6,7 @@
 //  Copyright © 2020 LewandaCode. All rights reserved.
 //
 
+import OSLog
 import Combine
 import Photos
 import MapKit
@@ -60,11 +61,20 @@ class AssetModel: ObservableObject {
                                                 self.loadingProgress = progress
                                             }
         }
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] image in
-                self?.thumbnailImage = image
-            })
-            .store(in: &cancellables)
+        .receive(on: DispatchQueue.main)
+        .sink(receiveCompletion: { status in
+            switch status {
+            case .failure(let error):
+                Logger.logger(for: Self.Type.self)
+                    .log("ContentFetcher failed to load thumbnail image: \(error.localizedDescription)")
+            case .finished:
+                Logger.logger(for: Self.Type.self)
+                    .log("ContentFetcher loaded thumbnail image successfully")
+            }
+        }, receiveValue: { [weak self] image in
+            self?.thumbnailImage = image
+        })
+        .store(in: &cancellables)
     }
 
     var creationDateString: String {

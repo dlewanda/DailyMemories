@@ -6,6 +6,7 @@
 //  Copyright © 2020 LewandaCode. All rights reserved.
 //
 
+import OSLog
 import UserNotifications
 import Combine
 
@@ -145,7 +146,8 @@ struct Notification {
                                                     trigger: trigger)
                 UNUserNotificationCenter.current().add(request) { [weak self] error in
                     guard error == nil else { return }
-                    print("Scheduling notification with id: \(self?.notification.id ?? "Unknown Notification ID?!?")")
+                    Logger.logger(for: Self.Type.self)
+                        .log("Scheduling notification with id: \(self?.notification.id ?? "Unknown Notification ID?!?")")
                 }
 
             default:
