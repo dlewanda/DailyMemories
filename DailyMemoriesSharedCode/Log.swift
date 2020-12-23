@@ -8,10 +8,11 @@
 
 import os
 
-import os
+extension Logger {
+    
+    public static func logger<T>(for category: T.Type) -> Logger {
+        return Logger(subsystem: Bundle.main.bundleIdentifier!,
+                      category: String(describing: category))
+    }
 
-private let subsystem = "com.lewandacode.Daily-Memories"
-
-public struct Log {
-  public static let notificationViewController = OSLog(subsystem: subsystem, category: "notificationViewController")
 }

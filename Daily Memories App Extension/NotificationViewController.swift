@@ -31,13 +31,13 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
             .sink(receiveCompletion: { [weak self] status in
                 switch status {
                 case .failure(let error):
-                    os_log("ContentFetcher failed to load image: %@",
-                           log: Log.notificationViewController,
-                           error.localizedDescription)
+                    Logger.logger(for: Self.Type.self)
+                        .log("ContentFetcher failed to load image: \(error.localizedDescription)")
                     self?.imageView?.isHidden = true
                     self?.label?.text = "No memories for today"
                 case .finished:
-                    os_log("ContentFetcher loaded image successfully", log: Log.notificationViewController)
+                    Logger.logger(for: Self.Type.self)
+                        .log("ContentFetcher loaded image successfully")
                 }
             }, receiveValue: { [weak self] (image, year) in
                 self?.imageView?.image = image
