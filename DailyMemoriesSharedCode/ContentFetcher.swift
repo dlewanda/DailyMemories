@@ -6,6 +6,7 @@
 //  Copyright © 2020 LewandaCode. All rights reserved.
 //
 
+import OSLog
 import Photos
 import Combine
 import UIKit
@@ -14,6 +15,7 @@ import AVKit
 public enum AssetError: Error {
     case videoIniCloud
     case noImageForToday
+    case unknownError
 }
 
 public struct Asset: Identifiable {
@@ -91,7 +93,8 @@ public class ContentFetcher: ObservableObject {
             case .restricted:
                 promise(.success(.restricted))
             @unknown default:
-                print("unknown authorization status")
+                Logger.logger(for: Self.Type.self)
+                    .log("unknown authorization status")
                 promise(.success(.restricted))
             }
 
@@ -127,7 +130,8 @@ public class ContentFetcher: ObservableObject {
             return assets
         }
 
-        var photoDate = date
+        // initialize asset date with requested date
+        var assetDate = date
         var calendar = Calendar.current
         calendar.timeZone = TimeZone.current
 
@@ -136,22 +140,25 @@ public class ContentFetcher: ObservableObject {
         let day = components.day ?? 0
         var year = components.year ?? 0
 
-        while photoDate >= oldestAssetDate {
-            let todayAssets = fetchAssets(for: photoDate)
+        while assetDate >= oldestAssetDate {
+            let todayAssets = fetchAssets(for: assetDate)
 
             if todayAssets.count > 0 {
                 var yearlyAssets = YearlyAssets(year: year)
 
-                print("-----------")
-                print("\(photoDate) photo count: \(todayAssets.count)")
+//                print("-----------")
+                Logger.logger(for: Self.Type.self)
+                    .log("\(assetDate) photo count: \(todayAssets.count)")
                 todayAssets.enumerateObjects { (asset, index, stop) in
                     yearlyAssets.assets.append(Asset(phAsset: asset))
                 }
                 assets.append(yearlyAssets)
-                print("-----------")
+                //TODO: 👇🏼should be never be committed!
+//                assets = [yearlyAssets]
+//                print("-----------")
             }
             year -= 1
-            photoDate = calendar.date(from: DateComponents(year:year, month: month, day: day, hour: 0, minute: 0, second: 0))!
+            assetDate = calendar.date(from: DateComponents(year:year, month: month, day: day, hour: 0, minute: 0, second: 0))!
         }
 
         return assets
@@ -189,7 +196,7 @@ extension ContentFetcher {
     public func loadImage(asset: PHAsset,
                           quality: PHImageRequestOptionsDeliveryMode = .opportunistic,
                           size: CGSize = PHImageManagerMaximumSize,
-                          progressHandler: PHAssetImageProgressHandler? = nil) -> Future<UIImage, Never> {
+                          progressHandler: PHAssetImageProgressHandler? = nil) -> Future<UIImage, Error> {
         let requestOptions = PHImageRequestOptions()
         requestOptions.deliveryMode = quality
         requestOptions.resizeMode = .exact
@@ -198,28 +205,40 @@ extension ContentFetcher {
             requestOptions.progressHandler = progressHandler
         }
 
-        let imagePromise = Future<UIImage, Never> { promise in
+        let imagePromise = Future<UIImage, Error> { promise in
             let manager = PHCachingImageManager.default()
 
+            if requestOptions.deliveryMode == .highQualityFormat {
+                // debugging
+                Logger.logger(for: Self.Type.self)
+                    .log("Fetching asset with quality \(requestOptions.deliveryMode.rawValue)")
+            }
             manager.requestImage(for: asset,
                                  targetSize: size,
                                  contentMode: .aspectFit,
                                  options: requestOptions) { img, info in
-                                    guard let img = img else {
-                                        if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
-                                            isIniCloud.boolValue == true {
-                                            if let cloudImage = UIImage(systemName: "person.icloud.fill") {
-                                                promise(.success(cloudImage))
-                                            }
-                                        }
-                                        return
-                                    }
-                                    promise(.success(img))
+                if requestOptions.deliveryMode == .highQualityFormat {
+                    Logger.logger(for: Self.Type.self)
+                        .log("Fetched asset with quality \(requestOptions.deliveryMode.rawValue)")
+                }
+                guard let img = img else {
+                    if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
+                       isIniCloud.boolValue == true {
+                        if let cloudImage = UIImage(systemName: "person.icloud.fill") {
+                            promise(.success(cloudImage))
+                        }
+                    } else {
+                        promise(.failure(AssetError.unknownError))
+                    }
+                    return
+                }
+                promise(.success(img))
             }
         }
         return imagePromise
     }
 
+    /// method to retrieve images using a reactive paradigm
     public func getImageFor(date: Date) -> AnyPublisher<(UIImage, Int), Error> {
         let assets = mostRecentAssetForThis(date: date)
         guard let firstAsset = assets.firstObject else {
@@ -238,6 +257,7 @@ extension ContentFetcher {
             .eraseToAnyPublisher()
     }
 
+    /// method to get image and return it in a callback for use in the widget implementation
     public func getImageFor(date: Date, completion: @escaping (UIImage?, Int) -> Void) {
         getImageFor(date: date)
             .receive(on: DispatchQueue.main)
@@ -269,6 +289,8 @@ extension ContentFetcher {
                                         if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
                                             isIniCloud.boolValue == true {
                                             promise(.failure(AssetError.videoIniCloud))
+                                        } else {
+                                            promise(.failure(AssetError.unknownError))
                                         }
                                         return
                                     }
@@ -303,6 +325,8 @@ extension ContentFetcher {
                                             if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber,
                                                 isIniCloud.boolValue == true {
                                                 promise(.failure(AssetError.videoIniCloud))
+                                            } else {
+                                                promise(.failure(AssetError.unknownError))
                                             }
                                             return
                                         }
