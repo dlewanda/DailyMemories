@@ -17,6 +17,15 @@ struct ImageView: View {
             .aspectRatio(contentMode: .fit)
     }
 
+    init(assetModel: AssetModel) {
+        guard let imageModel = assetModel as? ImageModel,
+              let image = imageModel.image else {
+            self.init(uiImage: assetModel.thumbnailImage)
+            return
+        }
+        self.init(uiImage: image)
+    }
+
     init(image: Binding<UIImage>) {
         self._image = image
     }

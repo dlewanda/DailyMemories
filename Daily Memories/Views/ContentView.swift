@@ -10,7 +10,7 @@ import SwiftUI
 import DailyMemoriesSharedCode
 
 struct ContentView: View {
-    @ObservedObject var assetModel: AssetModel
+    @StateObject var assetModel: AssetModel
 
     var body: some View {
         ZStack {

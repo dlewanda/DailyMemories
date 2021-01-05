@@ -16,6 +16,19 @@ struct VideoView: View {
         player = AVPlayer(url: url)
     }
 
+    init(assetModel: AssetModel) {
+        guard let videoModel = assetModel as? VideoModel,
+              let urlAsset = videoModel.urlAsset else {
+            self.init()
+            return
+        }
+        self.init(url: urlAsset.url)
+    }
+
+    private init() {
+        player = AVPlayer()
+    }
+
     var body: some View {
         VStack {
           PlayerViewController(player: player)

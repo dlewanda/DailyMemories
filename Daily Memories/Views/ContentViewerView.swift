@@ -10,7 +10,7 @@ import SwiftUI
 import DailyMemoriesSharedCode
 
 struct ContentViewerView: View {
-    @ObservedObject var assetModel: AssetModel
+    @StateObject var assetModel: AssetModel
     @State var scale: CGFloat = 1.0
     @State var currentPosition = CGSize.zero
     @State var newPosition = CGSize.zero
@@ -56,33 +56,17 @@ struct ContentViewerView: View {
             })
     }
 
-    private func assetView() -> some View {
-        let assetView: AnyView
-
+    @ViewBuilder private func assetView() -> some View {
         switch self.assetModel {
         case is VideoModel:
-            guard let videoModel = assetModel as? VideoModel,
-                let urlAsset = videoModel.urlAsset else {
-                    fallthrough
-            }
-            assetView = AnyView(VideoView(url: urlAsset.url))
+            VideoView(assetModel: assetModel)
         case is ImageModel:
-            guard let imageModel = assetModel as? ImageModel,
-                let image = imageModel.image else {
-                    fallthrough
-            }
-            assetView = AnyView(ImageView(uiImage: image))
+            ImageView(assetModel: assetModel)
         case is LivePhotoModel:
-            guard let livePhotoModel = assetModel as? LivePhotoModel,
-                let livePhoto = livePhotoModel.livePhoto else {
-                    fallthrough
-            }
-            assetView = AnyView(LivePhotoView(livePhoto: livePhoto))
+            LivePhotoView(assetModel: assetModel)
         default:
-            assetView = AnyView(ImageView(image: self.$assetModel.thumbnailImage))
+            ImageView(image: self.$assetModel.thumbnailImage)
         }
-
-        return assetView
     }
 
     var body: some View {
@@ -101,8 +85,8 @@ struct ContentViewerView: View {
                         self.currentPosition = CGSize.zero
                     }
 
-            }
-            .gesture(magnificationGesture.simultaneously(with: self.dragGesture))
+                }
+                .gesture(magnificationGesture.simultaneously(with: self.dragGesture))
 
             Spacer()
         }
