@@ -15,7 +15,8 @@ class LivePhotoModel: AssetModel {
     @Published var livePhoto: PHLivePhoto?
 
     fileprivate func getLivePhoto() {
-        ContentFetcher.shared.loadLivePhoto(asset: self.phAsset)
+        ContentFetcher.shared.loadLivePhoto(asset: self.phAsset,
+                                            quality: .highQualityFormat)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { status in
                 switch status {

@@ -21,13 +21,17 @@ struct YearListView: View {
         //TODO Switch on asset type
         let assetModel: AssetModel
 
-        switch asset.phAsset.mediaType {
-        case .video:
+        if asset.phAsset.mediaType == .video {
             assetModel = VideoModel(asset: asset.phAsset)
-        default:
-            assetModel = ImageModel(asset: asset.phAsset, imageQuality: .highQualityFormat)
-
+        } else {
+            if asset.phAsset.mediaSubtypes == .photoLive {
+                assetModel = LivePhotoModel(asset: asset.phAsset)
+            } else {
+                assetModel = ImageModel(asset: asset.phAsset,
+                                        imageQuality: .highQualityFormat)
+            }
         }
+
         let contentDetailView = ContentDetailView(assetModel: assetModel)
         return NavigationLink(destination: contentDetailView) {
             ContentView(assetModel: assetModel)

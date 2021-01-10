@@ -58,12 +58,22 @@ struct LivePhotoView : View {
     }
 
     var body: some View {
-        VStack {
-            if let livePhoto = _livePhoto {
+        if let livePhoto = _livePhoto {
+            ZStack {
                 LivePhotoViewRepresentable(livePhoto: livePhoto)
-            } else {
-                Image(systemName: "livephoto")
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: "livephoto")
+                            .colorInvert()
+                            .font(Font.system(.largeTitle).bold())
+                    }
+                    .padding()
+                }
             }
+        } else {
+            Image(systemName: "livephoto")
         }
     }
 }
