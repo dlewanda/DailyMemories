@@ -31,6 +31,7 @@ struct ContentDetailView: View {
             }
             MapView(coordinate: assetModel.coordinate)
         }
+        .navigationTitle(assetModel.assetYear)
         .sheet(isPresented: $showSheet) {
             ShareViewController(activityItems: ["Check out what happened today in \(self.assetModel.phAsset.year)",
                                                 self.assetModel.thumbnailImage],

@@ -69,7 +69,7 @@ struct MemoryEntry: TimelineEntry {
     static let defaultImage = Image(systemName: "photo")
 
     static var placeholder: MemoryEntry {
-        MemoryEntry(date: Date(), year: 2020, image: MemoryEntry.defaultImage)
+        MemoryEntry(date: Date(), year: -1, image: MemoryEntry.defaultImage)
     }
 }
 
@@ -83,9 +83,9 @@ struct DailyMemoriesWidgetEntryView : View {
                 .aspectRatio(contentMode: .fill)
             VStack {
                 Spacer()
-                Text("Today in \(String(entry.year))")
+                Text(entry.year > 2000 ? "Today in \(String(entry.year))" : "")
                     .foregroundColor(Color.white)
-            }.padding(5)
+            }.padding([.bottom], 30)
         }
     }
 }

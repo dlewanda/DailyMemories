@@ -81,6 +81,10 @@ class AssetModel: ObservableObject {
         phAsset.creationDateString
     }
 
+    var assetYear: String {
+        String("\(phAsset.year)")
+    }
+
     var coordinate: CLLocationCoordinate2D {
         phAsset.location?.coordinate ?? CLLocationCoordinate2D()
     }
